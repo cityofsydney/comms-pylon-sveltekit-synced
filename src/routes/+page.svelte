@@ -19,7 +19,7 @@ const slides = generateSlides();
 		pagination: false,
     gap    : '1rem',
 		width : 600,
-		height : 600,
+
 
   }
 
@@ -28,6 +28,7 @@ const slides = generateSlides();
     rewind      : true,
     gap         : '1rem',
     pagination  : false,
+		width : 600,
     fixedWidth  : 100,
     fixedHeight : 100,
     cover       : true,
@@ -44,6 +45,7 @@ const slides = generateSlides();
 			console.log( main.splide );
     }
   } );
+
 </script>
 
 
