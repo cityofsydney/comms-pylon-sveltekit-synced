@@ -26,10 +26,10 @@ const popupFeatured: PopupSettings = {
 </script>
 
 <!-- App Shell -->
-<AppShell>
+<AppShell slotPageFooter="py-4" slotFooter="py-16">
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar>
+		<AppBar padding="py-16">
 			<svelte:fragment slot="lead">
 				<strong class="text-xl uppercase">Whats' On</strong>
 			</svelte:fragment>
@@ -41,9 +41,9 @@ const popupFeatured: PopupSettings = {
 	<svelte:fragment slot="pageFooter">
 	
 	<div class="card p-4 w-72 shadow-xl" data-popup="popupFeatured">
-	<div><p>Demo Content</p></div>
-	<div class="arrow bg-surface-100-800-token" />
-</div>
+		<div><p>Feedbackform</p></div>
+		<div class="arrow bg-surface-100-800-token" />
+	</div>
 
 	<button class="btn variant-filled" use:popup={popupFeatured}>Feedback</button>
 				
