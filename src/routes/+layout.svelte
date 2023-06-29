@@ -26,12 +26,12 @@ const popupFeatured: PopupSettings = {
 </script>
 
 <!-- App Shell -->
-<AppShell slotPageFooter="py-4" slotFooter="py-16">
+<AppShell slotPageFooter="py-4 bg-red-300" slotFooter="py-16 bg-red-200">
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar padding="py-16">
+		<AppBar padding="py-16 bg-red-200">
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Whats' On</strong>
+				<strong class="text-xl">Whats' On</strong>
 			</svelte:fragment>
 			
 		</AppBar>

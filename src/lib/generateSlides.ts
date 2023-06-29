@@ -6,13 +6,13 @@
  *
  * @return An array with objects for sample images.
  */
-export function generateSlides(length = 6, sig = 0): Array<{ src: string; alt: string }> {
+export function generateSlides(length = 12, sig = 0): Array<{ src: string; alt: string }> {
 	return Array.from({ length }).map((_, index) => {
 		index = sig || index;
 
 		return {
-			src: `https://source.unsplash.com/random/600x600?sig=${index}`,
-			alt: `Image ${index}`
+			src: `https://source.unsplash.com/random/800x800?sig=${index}`,
+			alt: `${index}`
 		};
 	});
 }

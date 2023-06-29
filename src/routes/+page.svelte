@@ -18,19 +18,18 @@ const slides = generateSlides();
 		perMove   : 1,
 		pagination: false,
     gap    : '1rem',
-		width : 600,
-
-
+		width : 800,
+    height: 800,
   }
 
 	const thumbsOptions = {
-    type        : 'slide',
+    type        : 'loop',
     rewind      : true,
     gap         : '1rem',
     pagination  : false,
-		width : 600,
-    fixedWidth  : 100,
-    fixedHeight : 100,
+		width : 800,
+    fixedWidth  : 200,
+    fixedHeight : 200,
     cover       : true,
     focus       : 'center' as const,
 		trimSpace: true,
@@ -49,11 +48,8 @@ const slides = generateSlides();
 </script>
 
 
-
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
-
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="text-center flex flex-col items-center">
+<div class="container bg-green-100 h-full mx-auto flex justify-center items-center">
+	<div class="flex flex-col items-center bg-green-200">
 
 		<Splide bind:this={ main }  options={options}>
 			{ #each slides as slide }
