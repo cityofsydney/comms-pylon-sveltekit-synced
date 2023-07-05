@@ -11,7 +11,7 @@ export function generateSlides(length = 12, sig = 0): Array<{ src: string; alt: 
 		index = sig || index;
 
 		return {
-			src: `https://source.unsplash.com/random/800x800?sig=${index}`,
+			src: `800.webp`,
 			alt: `${index}`
 		};
 	});

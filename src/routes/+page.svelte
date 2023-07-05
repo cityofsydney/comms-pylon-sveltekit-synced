@@ -10,9 +10,9 @@ let thumbs: SplideSlide;
 const slides = generateSlides();
   const options = {
     type: 'fade',
-		speed: 100,
+		speed: 300,
     perPage: 1,
-		rewind      : true,
+		rewind      : false,
 		autoplay: true,
 		arrows: false,
 		perMove   : 1,
@@ -24,12 +24,13 @@ const slides = generateSlides();
 
 	const thumbsOptions = {
     type        : 'loop',
-    rewind      : true,
+    rewind      : false,
     gap         : '1rem',
     pagination  : false,
 		width : 800,
-    fixedWidth  : 200,
-    fixedHeight : 200,
+    perMove: 1,
+    fixedWidth  : 180,
+    fixedHeight : 180,
     cover       : true,
     focus       : 'center' as const,
 		trimSpace: true,
@@ -48,8 +49,16 @@ const slides = generateSlides();
 </script>
 
 
-<div class="container bg-green-100 h-full mx-auto flex justify-center items-center">
-	<div class="flex flex-col items-center bg-green-200">
+<div class="container  h-full mx-auto flex justify-center items-center">
+	<div class="flex flex-col items-center ">
+
+		<Splide on:click={e => { console.log( e.detail ) }} options={ thumbsOptions } bind:this={ thumbs }>
+    { #each slides as slide }
+      <SplideSlide data="boss">
+        <img src={ slide.src } alt={ slide.alt }>
+      </SplideSlide>
+    { /each }
+  </Splide>
 
 		<Splide bind:this={ main }  options={options}>
 			{ #each slides as slide }
@@ -59,13 +68,7 @@ const slides = generateSlides();
 				{ /each }
 		</Splide>
 
-		<Splide on:click={e => { console.log( e.detail ) }} options={ thumbsOptions } bind:this={ thumbs }>
-    { #each slides as slide }
-      <SplideSlide data="boss">
-        <img src={ slide.src } alt={ slide.alt }>
-      </SplideSlide>
-    { /each }
-  </Splide>
+
 	
 	</div>
 </div>
