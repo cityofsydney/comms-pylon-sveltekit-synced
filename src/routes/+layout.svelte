@@ -2,7 +2,7 @@
 
 
 
-import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
+
 
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-sahara.css';
@@ -12,10 +12,10 @@ import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import { popup } from '@skeletonlabs/skeleton';
-import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import { popup,storePopup  } from '@skeletonlabs/skeleton';
+	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
+  import type { PopupSettings } from '@skeletonlabs/skeleton';
 
-import { storePopup } from '@skeletonlabs/skeleton';
 storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
 const popupFeatured: PopupSettings = {
@@ -57,6 +57,11 @@ export let data;
 
  	$: events.set(data.two);
 
+	 function handleDropdownChange(e) {
+
+			console.log(e)
+	 }
+
   // ...and add it to the context for child components to access
     setContext('events', events);
 
@@ -72,15 +77,15 @@ export let data;
 
 				
 					<button class="btn variant-filled w-48 justify-between" use:popup={popupCombobox}>
-						<span class="capitalize">{comboboxValue ?? 'Trigger'}</span>
+						<span class="capitalize">{comboboxValue ?? 'Today'}</span>
 						<span>↓</span>
 					</button>
 
 					
 <div class="card w-48 shadow-xl py-2" data-popup="popupCombobox">
 	<ListBox rounded="rounded-none">
-		<ListBoxItem bind:group={comboboxValue} name="medium" value="books">Books</ListBoxItem>
-		<ListBoxItem bind:group={comboboxValue} name="medium" value="movies">Movies</ListBoxItem>
+		<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="books">Books</ListBoxItem>
+		<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="movies">Movies</ListBoxItem>
 		<ListBoxItem bind:group={comboboxValue} name="medium" value="television">TV</ListBoxItem>
 	</ListBox>
 	<div class="arrow bg-surface-100-800-token" />
