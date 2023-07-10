@@ -1,13 +1,19 @@
 <script lang="ts">
+ import { getContext } from 'svelte';
 import { generateSlides } from '$lib';
 import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 import '@splidejs/svelte-splide/css';
 import { onMount } from 'svelte';
 
+
+// Retrieve user store from context
+const events = getContext('events');
+
+//console.log($events)
+
 let main: Splide;
 let thumbs: SplideSlide;
 
-const slides = generateSlides();
   const options = {
     type: 'fade',
 		speed: 300,
@@ -49,11 +55,11 @@ const slides = generateSlides();
 </script>
 
 
-<div class="container  h-full mx-auto flex justify-center items-center">
+<div class="container h-full mx-auto flex justify-center items-center">
 	<div class="flex flex-col items-center ">
 
 		<Splide on:click={e => { console.log( e.detail ) }} options={ thumbsOptions } bind:this={ thumbs }>
-    { #each slides as slide }
+    {#each $events as slide }
       <SplideSlide data="boss">
         <img src={ slide.src } alt={ slide.alt }>
       </SplideSlide>
@@ -61,7 +67,7 @@ const slides = generateSlides();
   </Splide>
 
 		<Splide bind:this={ main }  options={options}>
-			{ #each slides as slide }
+			{ #each $events as slide }
 					<SplideSlide>
 						<img src={ slide.src } alt={ slide.alt }>
 					</SplideSlide>

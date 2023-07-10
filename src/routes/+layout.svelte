@@ -1,4 +1,8 @@
 <script lang='ts'>
+
+
+
+
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-sahara.css';
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
@@ -22,6 +26,26 @@ const popupFeatured: PopupSettings = {
 	placement: 'top',
 };
 
+import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
+
+
+export let data;
+
+//console.log(data)
+
+  // Create a store and update it when necessary...
+  const events = writable();
+	const one = writable();
+	const two = writable();
+
+	$: one.set(data.one)
+	$: two.set(data.two)
+
+ 	$: events.set(data.one);
+
+  // ...and add it to the context for child components to access
+    setContext('events', events);
 
 </script>
 
