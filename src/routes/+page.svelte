@@ -7,9 +7,9 @@ import { onMount } from 'svelte';
 
 
 // Retrieve user store from context
-const events = getContext('events');
+const nowShowing = getContext('nowShowing');
 
-//console.log($events)
+//console.log($nowShowing)
 
 let main: Splide;
 let thumbs: SplideSlide;
@@ -18,23 +18,24 @@ let thumbs: SplideSlide;
     type: 'fade',
 		speed: 300,
     perPage: 1,
-		rewind      : false,
-		autoplay: true,
+     perMove: 1,
 		arrows: false,
 		perMove   : 1,
 		pagination: false,
     gap    : '1rem',
 		width : 800,
     height: 800,
+    pauseOnHover: false,
   }
 
 	const thumbsOptions = {
     type        : 'loop',
+    perMove: 1,
+    autoplay: true,
     rewind      : false,
     gap         : '1rem',
     pagination  : false,
 		width : 800,
-    perMove: 1,
     fixedWidth  : 180,
     fixedHeight : 180,
     cover       : true,
@@ -42,6 +43,8 @@ let thumbs: SplideSlide;
 		trimSpace: true,
     isNavigation: true,
     updateOnMove: true,
+        pauseOnHover: false,
+
   };
 
 	onMount( () => {
@@ -59,17 +62,17 @@ let thumbs: SplideSlide;
 	<div class="flex flex-col items-center ">
 
 		<Splide on:click={e => { console.log( e.detail ) }} options={ thumbsOptions } bind:this={ thumbs }>
-    {#each $events as slide }
+    {#each $nowShowing as slide }
       <SplideSlide data="boss">
-        <img src={ slide.src } alt={ slide.alt }>
+        <img src={slide.tileImageCloudinary[0].secure_url } alt={ slide.name }>
       </SplideSlide>
     { /each }
   </Splide>
 
-		<Splide bind:this={ main }  options={options}>
-			{ #each $events as slide }
+		<Splide bind:this={ main } options={options}>
+			{ #each $nowShowing as slide }
 					<SplideSlide>
-						<img src={ slide.src } alt={ slide.alt }>
+						<img src={ slide.tileImageCloudinary[0].secure_url } alt={ slide.name }>
 					</SplideSlide>
 				{ /each }
 		</Splide>

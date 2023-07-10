@@ -1,70 +1,82 @@
 <script lang='ts'>
+export let data;
 
+// The ordering of these imports is critical to your app working properly
+import '@skeletonlabs/skeleton/themes/theme-sahara.css';
+// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
+import '@skeletonlabs/skeleton/styles/skeleton.css';
+// Most of your app wide CSS should be put in this file
+import '../app.postcss';
+import type { PopupSettings } from '@skeletonlabs/skeleton';
 
+import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+import { popup,storePopup  } from '@skeletonlabs/skeleton';
+import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
+import { setContext } from 'svelte';
+import { writable, derived  } from 'svelte/store';
 
-
-	// The ordering of these imports is critical to your app working properly
-	import '@skeletonlabs/skeleton/themes/theme-sahara.css';
-	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
-	import '@skeletonlabs/skeleton/styles/skeleton.css';
-	// Most of your app wide CSS should be put in this file
-	import '../app.postcss';
-	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import { popup,storePopup  } from '@skeletonlabs/skeleton';
-	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
-  import type { PopupSettings } from '@skeletonlabs/skeleton';
-
-storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+storePopup.set({
+    computePosition,
+    autoUpdate,
+    offset,
+    shift,
+    flip,
+    arrow
+});
 
 const popupFeatured: PopupSettings = {
-	// Represents the type of event that opens/closed the popup
-	event: 'click',
-	// Matches the data-popup value on your popup element
-	target: 'popupFeatured',
-	// Defines which side of your trigger the popup will appear
-	placement: 'top',
+    // Represents the type of event that opens/closed the popup
+    event: 'click',
+    // Matches the data-popup value on your popup element
+    target: 'popupFeatured',
+    placement: 'top',
 };
-
 
 let comboboxValue: string;
 
 const popupCombobox: PopupSettings = {
-	event: 'focus-click',
-	target: 'popupCombobox',
-	placement: 'bottom',
-	closeQuery: '.listbox-item'
+    event: 'click',
+    target: 'popupCombobox',
+    placement: 'bottom',
+    closeQuery: '.listbox-item',
+    //state: (e: Record<string, boolean>) => console.log(e)
 };
-				
-
-import { setContext } from 'svelte';
-    import { writable, derived  } from 'svelte/store';
 
 
-export let data;
 
 //console.log(data)
 
-  // Create a store and update it when necessary...
-  const events = writable([]);
-	const one = writable([]);
-	const two = writable([]);
+// Create a store and update it when necessary...
+const events = writable([]);
+const nowShowing = writable([]);
 
-	$: one.set(data.one)
-	$: two.set(data.two)
+$: events.set(data);
+$: nowShowing.set(data.eventsToday.data)
 
+// ...and add it to the context for child components to access
+setContext('nowShowing', nowShowing);
 
- 	$: events.set(data.two);
+function handleDropdownChange(e) {
 
-	 function handleDropdownChange(e) {
+    const value = e.target.__value
 
-			console.log(e)
-	 }
+    switch (value) {
+        case 'today':
+            $: nowShowing.set(data.eventsToday.data)
+            break;
+        case 'weekend':
+            $: nowShowing.set(data.eventsWeekend.data)
+            break;
+        case 'next-week':
+            $: nowShowing.set(data.eventsNextWeek.data)
+            break;
 
-  // ...and add it to the context for child components to access
-    setContext('events', events);
+    }
 
+    console.log(e)
+}
 </script>
 
 <!-- App Shell -->
@@ -82,14 +94,14 @@ export let data;
 					</button>
 
 					
-<div class="card w-48 shadow-xl py-2" data-popup="popupCombobox">
-	<ListBox rounded="rounded-none">
-		<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="books">Books</ListBoxItem>
-		<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="movies">Movies</ListBoxItem>
-		<ListBoxItem bind:group={comboboxValue} name="medium" value="television">TV</ListBoxItem>
-	</ListBox>
-	<div class="arrow bg-surface-100-800-token" />
-</div>
+					<div class="card w-48 shadow-xl py-2" data-popup="popupCombobox">
+						<ListBox rounded="rounded-none">
+							<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="today">Today</ListBoxItem>
+							<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="weekend">This weekend</ListBoxItem>
+							<ListBoxItem bind:group={comboboxValue} on:change={ handleDropdownChange} name="medium" value="next-week">Next week</ListBoxItem>
+						</ListBox>
+						<div class="arrow bg-surface-100-800-token" />
+					</div>
 					
 			
 			</svelte:fragment>
