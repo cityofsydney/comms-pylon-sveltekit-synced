@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@rgossiaux/svelte-headlessui": "^2.0.0",
 		"@splidejs/svelte-splide": "^0.2.9"
 	}
 }

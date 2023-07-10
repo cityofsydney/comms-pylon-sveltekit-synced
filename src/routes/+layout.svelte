@@ -2,6 +2,7 @@
 
 
 
+import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-sahara.css';
@@ -26,8 +27,19 @@ const popupFeatured: PopupSettings = {
 	placement: 'top',
 };
 
+
+let comboboxValue: string;
+
+const popupCombobox: PopupSettings = {
+	event: 'focus-click',
+	target: 'popupCombobox',
+	placement: 'bottom',
+	closeQuery: '.listbox-item'
+};
+				
+
 import { setContext } from 'svelte';
-    import { writable } from 'svelte/store';
+    import { writable, derived  } from 'svelte/store';
 
 
 export let data;
@@ -35,14 +47,15 @@ export let data;
 //console.log(data)
 
   // Create a store and update it when necessary...
-  const events = writable();
-	const one = writable();
-	const two = writable();
+  const events = writable([]);
+	const one = writable([]);
+	const two = writable([]);
 
 	$: one.set(data.one)
 	$: two.set(data.two)
 
- 	$: events.set(data.one);
+
+ 	$: events.set(data.two);
 
   // ...and add it to the context for child components to access
     setContext('events', events);
@@ -56,6 +69,24 @@ export let data;
 		<AppBar padding="py-16" background="bg-none">
 			<svelte:fragment slot="lead">
 				<strong class="text-4xl">Whats' On <span class="underline">nearby</span></strong>
+
+				
+					<button class="btn variant-filled w-48 justify-between" use:popup={popupCombobox}>
+						<span class="capitalize">{comboboxValue ?? 'Trigger'}</span>
+						<span>↓</span>
+					</button>
+
+					
+<div class="card w-48 shadow-xl py-2" data-popup="popupCombobox">
+	<ListBox rounded="rounded-none">
+		<ListBoxItem bind:group={comboboxValue} name="medium" value="books">Books</ListBoxItem>
+		<ListBoxItem bind:group={comboboxValue} name="medium" value="movies">Movies</ListBoxItem>
+		<ListBoxItem bind:group={comboboxValue} name="medium" value="television">TV</ListBoxItem>
+	</ListBox>
+	<div class="arrow bg-surface-100-800-token" />
+</div>
+					
+			
 			</svelte:fragment>
 			
 		</AppBar>
