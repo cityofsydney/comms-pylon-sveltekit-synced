@@ -14,46 +14,46 @@ const nowShowing = getContext('nowShowing');
 let main: Splide;
 let thumbs: SplideSlide;
 
-  const options = {
+const options = {
     type: 'fade',
-		speed: 300,
+    speed: 300,
     perPage: 1,
-     perMove: 1,
-		arrows: false,
-		perMove   : 1,
-		pagination: false,
-    gap    : '1rem',
-		width : 800,
+    perMove: 1,
+    arrows: false,
+    perMove: 1,
+    pagination: false,
+    gap: '1rem',
+    width: 800,
     height: 800,
     pauseOnHover: false,
-  }
+}
 
-	const thumbsOptions = {
-    type        : 'loop',
+const thumbsOptions = {
+    type: 'loop',
     perMove: 1,
     autoplay: true,
-    rewind      : false,
-    gap         : '1rem',
-    pagination  : false,
-		width : 800,
-    fixedWidth  : 180,
-    fixedHeight : 180,
-    cover       : true,
-    focus       : 'center' as const,
-		trimSpace: true,
+    rewind: false,
+    gap: '1rem',
+    pagination: false,
+    width: 800,
+    fixedWidth: 180,
+    fixedHeight: 180,
+    cover: true,
+    focus: 'center'
+    as
+    const,
+    trimSpace: true,
     isNavigation: true,
     updateOnMove: true,
-        pauseOnHover: false,
+    pauseOnHover: false,
+};
 
-  };
-
-	onMount( () => {
-	
-    if ( main && thumbs ) {
-      main.sync( thumbs.splide );
-			console.log( main.splide );
+onMount(() => {
+    if (main && thumbs) {
+        main.sync(thumbs.splide);
+        console.log(main.splide);
     }
-  } );
+});
 
 </script>
 
