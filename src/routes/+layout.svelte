@@ -15,6 +15,7 @@ import { popup,storePopup  } from '@skeletonlabs/skeleton';
 import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 import { setContext } from 'svelte';
+import {allEvents, nowShowing } from '$lib/stores'
 import { writable, derived  } from 'svelte/store';
 
 storePopup.set({
@@ -44,15 +45,9 @@ const popupCombobox: PopupSettings = {
     //state: (e: Record<string, boolean>) => console.log(e)
 };
 
-
-
 //console.log(data)
 
-// Create a store and update it when necessary...
-const events = writable([]);
-const nowShowing = writable([]);
-
-$: events.set(data);
+$: allEvents.set(data);
 $: nowShowing.set(data.eventsToday.data)
 
 // ...and add it to the context for child components to access
@@ -64,18 +59,17 @@ function handleDropdownChange(e) {
 
     switch (value) {
         case 'today':
-            $: nowShowing.set(data.eventsToday.data)
+           // $: nowShowing.set(data.eventsToday.data)
             break;
         case 'weekend':
-            $: nowShowing.set(data.eventsWeekend.data)
+           // $: nowShowing.set(data.eventsWeekend.data)
             break;
         case 'next-week':
-            $: nowShowing.set(data.eventsNextWeek.data)
+           // $: nowShowing.set(data.eventsNextWeek.data)
             break;
 
     }
-
-    console.log(e)
+    //console.log(e)
 }
 </script>
 

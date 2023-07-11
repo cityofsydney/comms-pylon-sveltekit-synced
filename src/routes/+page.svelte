@@ -32,6 +32,7 @@ const thumbsOptions = {
     type: 'loop',
     perMove: 1,
     autoplay: true,
+    interval: 10000,
     rewind: false,
     gap: '1rem',
     pagination: false,
@@ -39,9 +40,7 @@ const thumbsOptions = {
     fixedWidth: 180,
     fixedHeight: 180,
     cover: true,
-    focus: 'center'
-    as
-    const,
+    focus: 'center',
     trimSpace: true,
     isNavigation: true,
     updateOnMove: true,
