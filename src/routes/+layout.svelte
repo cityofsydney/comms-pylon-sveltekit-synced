@@ -2,7 +2,7 @@
 export let data;
 
 // The ordering of these imports is critical to your app working properly
-import '@skeletonlabs/skeleton/themes/theme-sahara.css';
+import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 // If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
 import '@skeletonlabs/skeleton/styles/skeleton.css';
 // Most of your app wide CSS should be put in this file
@@ -48,10 +48,14 @@ const popupCombobox: PopupSettings = {
 //console.log(data)
 
 $: allEvents.set(data);
-$: nowShowing.set(data.eventsToday.data)
+$: nowShowing.set($allEvents.eventsToday.data)
 
 // ...and add it to the context for child components to access
 setContext('nowShowing', nowShowing);
+
+function updateStore(n) {
+		$nowShowing.set(n);
+}
 
 function handleDropdownChange(e) {
 
@@ -59,15 +63,14 @@ function handleDropdownChange(e) {
 
     switch (value) {
         case 'today':
-           // $: nowShowing.set(data.eventsToday.data)
+            updateStore(allEvents.eventsToday.data)
             break;
         case 'weekend':
-           // $: nowShowing.set(data.eventsWeekend.data)
+           updateStore(allEvents.eventsWeekend.data)
             break;
         case 'next-week':
-           // $: nowShowing.set(data.eventsNextWeek.data)
+					updateStore(allEvents.eventsNextWeek.data)
             break;
-
     }
     //console.log(e)
 }
