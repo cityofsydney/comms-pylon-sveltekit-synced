@@ -77,15 +77,24 @@ function handleDropdownChange(e) {
 </script>
 
 <!-- App Shell -->
-<AppShell slotHeader="flex items-center justify-center" slotPageFooter="py-4 " slotFooter="py-16 flex items-center justify-center">
+<AppShell 
+slotHeader="flex items-center justify-center" 
+slotPageFooter="py-4" 
+slotFooter="py-16 flex items-center justify-center">
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar padding="py-16" background="bg-none">
 			<svelte:fragment slot="lead">
-				<strong class="text-4xl">Whats' On <span class="underline">nearby</span></strong>
+				<strong class="text-7xl font-heading">Whats' On <span class="underline">nearby</span></strong>
 
-				
-					<button class="btn variant-filled w-48 justify-between" use:popup={popupCombobox}>
+			</svelte:fragment>
+			
+		</AppBar>
+	</svelte:fragment>
+	<!-- Page Route Content -->
+	<slot />
+	<svelte:fragment slot="pageFooter">
+		<button class="btn variant-filled w-48 justify-between" use:popup={popupCombobox}>
 						<span class="capitalize">{comboboxValue ?? 'Today'}</span>
 						<span>↓</span>
 					</button>
@@ -99,15 +108,6 @@ function handleDropdownChange(e) {
 						</ListBox>
 						<div class="arrow bg-surface-100-800-token" />
 					</div>
-					
-			
-			</svelte:fragment>
-			
-		</AppBar>
-	</svelte:fragment>
-	<!-- Page Route Content -->
-	<slot />
-	<svelte:fragment slot="pageFooter">
 	
 	<div class="card p-4 w-72 shadow-xl" data-popup="popupFeatured">
 		<div><p>Feedbackform</p></div>
@@ -118,6 +118,6 @@ function handleDropdownChange(e) {
 				
 	</svelte:fragment>
 	<svelte:fragment slot="footer">
-	<img src="cos-logo.svg" alt="" class="w-48 ">
+	<img src="cos-logo.svg" alt="" class="w-[400px]">
 	</svelte:fragment>
 </AppShell>

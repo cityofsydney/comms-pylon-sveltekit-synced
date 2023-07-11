@@ -23,8 +23,8 @@ const options = {
     perMove: 1,
     pagination: false,
     gap: '1rem',
-    width: 800,
-    height: 800,
+    width: 920,
+    height: 920,
     pauseOnHover: false,
 }
 
@@ -36,9 +36,9 @@ const thumbsOptions = {
     rewind: false,
     gap: '1rem',
     pagination: false,
-    width: 800,
-    fixedWidth: 180,
-    fixedHeight: 180,
+    width: 920,
+    fixedWidth: 172,
+    fixedHeight: 172,
     cover: true,
     focus: 'center',
     trimSpace: true,
@@ -57,8 +57,16 @@ onMount(() => {
 </script>
 
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="flex flex-col items-center ">
+<div class="container h-full mx-auto flex justify-center items-start">
+	<div class="flex flex-col gap-y-12 items-center">
+
+	<Splide bind:this={ main } options={options}>
+			{ #each $nowShowing as slide }
+					<SplideSlide>
+						<img src={ slide.tileImageCloudinary[0].secure_url } alt={ slide.name }>
+					</SplideSlide>
+				{ /each }
+		</Splide>
 
 		<Splide on:click={e => { console.log( e.detail ) }} options={ thumbsOptions } bind:this={ thumbs }>
     {#each $nowShowing as slide }
@@ -68,13 +76,7 @@ onMount(() => {
     { /each }
   </Splide>
 
-		<Splide bind:this={ main } options={options}>
-			{ #each $nowShowing as slide }
-					<SplideSlide>
-						<img src={ slide.tileImageCloudinary[0].secure_url } alt={ slide.name }>
-					</SplideSlide>
-				{ /each }
-		</Splide>
+	
 
 
 	
