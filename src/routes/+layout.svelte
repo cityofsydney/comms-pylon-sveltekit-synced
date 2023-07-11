@@ -86,9 +86,7 @@ slotFooter="py-16 flex items-center justify-center">
 		<AppBar padding="py-16" background="bg-none">
 			<svelte:fragment slot="lead">
 				<strong class="text-7xl font-heading">Whats' On <span class="underline">nearby</span></strong>
-
 			</svelte:fragment>
-			
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
