@@ -20,6 +20,7 @@
 
 	const options = {
 		type: 'fade',
+    lazyLoad: "sequential",
 		speed: 600,
 		perPage: 1,
 		perMove: 1,
@@ -33,6 +34,7 @@
 
 	const thumbsOptions = {
 		type: 'loop',
+    lazyLoad: "sequential",
 		perMove: 1,
 		autoplay: true,
 		interval: 10000,
@@ -69,6 +71,10 @@
 		//state: (e: Record<string, boolean>) => console.log(e)
 	};
 	function handleDropdownChange(e) {
+
+
+
+
 		const value = e.target.__value;
 
 		switch (value) {
@@ -170,7 +176,7 @@
 						<img src={slide.qrcode} class="w-[100px]" alt="" />
 					</div>
 					<img
-						src={slide.tileImageCloudinary[0].secure_url}
+          data-splide-lazy={slide.tileImageCloudinary[0].secure_url}
 						alt={slide.name}
 						class="object-cover"
 					/>
@@ -259,7 +265,7 @@
 		>
 			{#each $nowShowingStore as slide}
 				<SplideSlide data="boss" class="relative">
-					<img src={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="" />
+					<img data-splide-lazy={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="" />
 					<div
 						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C]"
 					/>
