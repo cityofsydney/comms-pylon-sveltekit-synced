@@ -86,6 +86,27 @@
 	}
 
 	const dates = [
+		'2023-07-01',
+		'2023-07-02',
+		'2023-07-03',
+		'2023-07-04',
+		'2023-07-05',
+		'2023-07-06',
+		'2023-07-07',
+		'2023-07-08',
+		'2023-07-09',
+		'2023-07-10',
+		'2023-07-11',
+		'2023-07-12',
+		'2023-07-13',
+		'2023-07-14',
+		'2023-07-15',
+		'2023-07-16',
+		'2023-07-17',
+		'2023-07-18',
+		'2023-07-19',
+		'2023-07-20',
+		'2023-07-21',
 		'2023-07-22',
 		'2023-07-23',
 		'2023-07-24',
@@ -98,7 +119,16 @@
 		'2023-07-31'
 	];
 
-	const weekendDates = dates.filter((date) => {
+	const currentDate = new Date();
+
+	const filteredDates = dates.filter((date) => {
+		const dateObj = new Date(date);
+		return dateObj >= currentDate;
+	});
+
+	//console.log(filteredDates);
+
+	const weekendDates = filteredDates.filter((date) => {
 		const dayOfWeek = new Date(date).getDay();
 		return dayOfWeek === 6 || dayOfWeek === 0;
 	});
@@ -136,7 +166,7 @@
 						</p>
 					</div>
 					<div class="absolute bottom-8 right-8">
-            <div class="w-[100px] leading-none mb-3">Scan QR code for more info</div>
+						<div class="w-[100px] leading-none mb-3">Scan QR code for more info</div>
 						<img src={slide.qrcode} class="w-[100px]" alt="" />
 					</div>
 					<img
@@ -167,7 +197,7 @@
 				</button>
 
 				<div
-					class="card w-48 shadow-xl rounded-xl bg-green-600 py-2 z-10"
+					class="card w-48 shadow-xl rounded-xl py-2 z-10 bg-primary-500"
 					data-popup="popupCombobox"
 				>
 					<ListBox class="text-white ">
@@ -231,7 +261,7 @@
 				<SplideSlide data="boss" class="relative">
 					<img src={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="" />
 					<div
-						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C] "
+						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C]"
 					/>
 					<div class="absolute bottom-5 left-5 text-base">
 						{slide.name}
