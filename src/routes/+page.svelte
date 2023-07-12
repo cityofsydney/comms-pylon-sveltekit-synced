@@ -20,7 +20,7 @@
 
 	const options = {
 		type: 'fade',
-    lazyLoad: "sequential",
+		lazyLoad: 'sequential',
 		speed: 600,
 		perPage: 1,
 		perMove: 1,
@@ -34,7 +34,7 @@
 
 	const thumbsOptions = {
 		type: 'loop',
-    lazyLoad: "sequential",
+		lazyLoad: 'sequential',
 		perMove: 1,
 		autoplay: true,
 		interval: 10000,
@@ -71,10 +71,6 @@
 		//state: (e: Record<string, boolean>) => console.log(e)
 	};
 	function handleDropdownChange(e) {
-
-
-
-
 		const value = e.target.__value;
 
 		switch (value) {
@@ -150,7 +146,7 @@
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-start">
-	<div class="flex flex-col gap-y-12 items-center">
+	<div class="flex flex-col items-center">
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
 				<SplideSlide class="relative">
@@ -160,8 +156,8 @@
 					<div class="absolute top-0 p-12 w-full flex flex-col">
 						<p class="text-white text-6xl leading-tight mb-5">{slide.name}</p>
 						<p class="text-white text-3xl mb-5">{slide.strapline}</p>
-						<p class="text-white text-2xl flex items-center gap-2">
-							{slide.upcomingDate} |
+						<p class="text-white text-2xl flex items-center">
+							{slide.upcomingDate} <span class="px-4">|</span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
 								><path
 									fill="#fff"
@@ -176,7 +172,7 @@
 						<img src={slide.qrcode} class="w-[100px]" alt="" />
 					</div>
 					<img
-          data-splide-lazy={slide.tileImageCloudinary[0].secure_url}
+						data-splide-lazy={slide.tileImageCloudinary[0].secure_url}
 						alt={slide.name}
 						class="object-cover"
 					/>
@@ -184,9 +180,9 @@
 			{/each}
 		</Splide>
 
-		<div class="flex gap-10 items-center w-full">
-			<div class="flex gap-10 items-center">
-				<h2 class="h1 text-white text-4xl">What&#8217;s On</h2>
+		<div class="flex items-center w-full my-10">
+			<div class="flex items-center">
+				<h2 class="h1 text-white text-4xl mr-10">What&#8217;s On</h2>
 				<button
 					class="btn btn-lg bg-green-700 w-48 justify-between text-white"
 					use:popup={popupCombobox}
@@ -230,8 +226,8 @@
 					<!-- 	<div class="arrow bg-surface-100-800-token" /> -->
 				</div>
 			</div>
-			<div class="ml-auto flex gap-4 items-center">
-				<div class="shrink">
+			<div class="ml-auto flex items-center">
+				<div class="shrink pr-5">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="40"
@@ -265,7 +261,11 @@
 		>
 			{#each $nowShowingStore as slide}
 				<SplideSlide data="boss" class="relative">
-					<img data-splide-lazy={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="" />
+					<img
+						data-splide-lazy={slide.tileImageCloudinary[0].secure_url}
+						alt={slide.name}
+						class=""
+					/>
 					<div
 						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C]"
 					/>
@@ -276,7 +276,7 @@
 			{/each}
 		</Splide>
 
-		<div class="flex w-full items-center">
+		<div class="flex w-full items-center my-10">
 			<div class="flex flex-col">
 				<div class="text-2xl">Powered by What’s On</div>
 				<div class="text-3xl">whatson.sydney</div>
@@ -296,6 +296,26 @@
 		</div>
 	</div>
 </div>
+
+<svelte:head>
+	<style>
+		.splide__track--nav > .splide__list > .splide__slide.is-active {
+			@apply border-[#188838];
+		}
+		.splide__arrow {
+			@apply bg-[#188838] h-12 w-12 opacity-100;
+		}
+		.splide__arrow--next {
+			@apply -right-[4rem] animate-pulse;
+		}
+		.splide__arrow--prev {
+			@apply -left-[4rem] animate-pulse;
+		}
+		.splide__arrow svg {
+			@apply text-white fill-white;
+		}
+	</style>
+</svelte:head>
 
 <style lang="postcss">
 </style>
