@@ -228,10 +228,10 @@
 			bind:this={thumbs}
 		>
 			{#each $nowShowingStore as slide}
-				<SplideSlide data="boss" class="rounded-3xl relative">
-					<img src={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="rounded-3xl" />
+				<SplideSlide data="boss" class="relative">
+					<img src={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="" />
 					<div
-						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C] rounded-b-3xl"
+						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C] "
 					/>
 					<div class="absolute bottom-5 left-5 text-base">
 						{slide.name}

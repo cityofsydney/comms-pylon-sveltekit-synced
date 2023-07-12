@@ -23,14 +23,15 @@
 
 html,
 body {
-	@apply h-full overflow-hidden bg-gradient-to-b from-purple-800 via-purple-900 to-black;
+	background: linear-gradient(180deg, #8747B9 0%, #523285 100%);
+	@apply h-full overflow-hidden ;
 }
 
 .splide__track--nav>.splide__list>.splide__slide.is-active {
   @apply border-[#188838] 
 }
 .splide__arrow {
-@apply bg-[#188838] h-12 w-12
+@apply bg-[#188838] h-12 w-12 opacity-100
 }
 .splide__arrow--next {
 @apply -right-[4rem] animate-pulse 
