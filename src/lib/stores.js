@@ -1,4 +1,6 @@
-import { writable } from 'svelte/store';
+import { persisted } from 'svelte-local-storage-store'
 
-export const allEvents = writable([]);
-export const nowShowing = writable([]);
+// First param `eventsTodayStore` is the local storage key.
+// Second param is the initial value.
+export const allEventsStore = persisted('allEventsStore', [])
+export const nowShowingStore = persisted('nowShowingStore', [])
