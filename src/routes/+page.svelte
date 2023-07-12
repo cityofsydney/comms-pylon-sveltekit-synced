@@ -146,16 +146,16 @@
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-start">
-	<div class="flex flex-col items-center">
+	<div class="flex flex-col items-center min-h-[920px]">
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
 				<SplideSlide class="relative">
 					<div
-						class="w-full h-[70%] block absolute left-0 top-0 bg-gradient-to-t from-transparent to-black"
+						class="w-full h-[70%] block absolute left-0 bottom-0 bg-gradient-to-b from-transparent to-black"
 					/>
-					<div class="absolute top-0 p-12 w-full flex flex-col">
-						<p class="text-white text-6xl leading-tight mb-5">{slide.name}</p>
-						<p class="text-white text-3xl mb-5">{slide.strapline}</p>
+					<div class="absolute bottom-0 left-0 right-36 p-12  flex flex-col ">
+						<h2 class="text-white text-6xl leading-tight mb-5 h2 !font-normal">{slide.name}</h2>
+						<p class="text-white text-2xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
 							{slide.upcomingDate} <span class="px-4">|</span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
@@ -187,7 +187,7 @@
 					class="btn btn-lg bg-green-700 w-48 justify-between text-white"
 					use:popup={popupCombobox}
 				>
-					<span class="capitalize">{comboboxValue ?? 'Today'}</span>
+					<span class="capitalize h6">{comboboxValue ?? 'Today'}</span>
 					<span
 						><svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" fill="none"
 							><path
@@ -246,7 +246,7 @@
 					>
 				</div>
 				<div>
-					<div class="text-xl font-bold h6 tracking-widest">This pylon is interactive</div>
+					<div class="text-xl font-bold h6">This pylon is interactive</div>
 					<div class="text-xl">Touch events below to explore</div>
 				</div>
 			</div>
@@ -267,9 +267,9 @@
 						class=""
 					/>
 					<div
-						class="w-full h-[75%] block absolute bottom-0 bg-gradient-to-b from-transparent to-[#041C2C]"
+						class="w-full h-full block absolute bottom-0 bg-gradient-to-b from-transparent to-black"
 					/>
-					<div class="absolute bottom-5 left-5 text-base">
+					<div class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
 						{slide.name}
 					</div>
 				</SplideSlide>
@@ -278,8 +278,8 @@
 
 		<div class="flex w-full items-center my-10">
 			<div class="flex flex-col">
-				<div class="text-2xl">Powered by What’s On</div>
-				<div class="text-3xl">whatson.sydney</div>
+				<div class="text-xl">Powered by What’s On</div>
+				<div class="text-3xl h3">whatson.sydney</div>
 			</div>
 			<div class="ml-auto">
 				<button class="btn btn-lg h6 bg-yellow-400 text-black"
@@ -297,25 +297,7 @@
 	</div>
 </div>
 
-<svelte:head>
-	<style>
-		.splide__track--nav > .splide__list > .splide__slide.is-active {
-			@apply border-[#188838];
-		}
-		.splide__arrow {
-			@apply bg-[#188838] h-12 w-12 opacity-100;
-		}
-		.splide__arrow--next {
-			@apply -right-[4rem] animate-pulse;
-		}
-		.splide__arrow--prev {
-			@apply -left-[4rem] animate-pulse;
-		}
-		.splide__arrow svg {
-			@apply text-white fill-white;
-		}
-	</style>
-</svelte:head>
+
 
 <style lang="postcss">
 </style>
