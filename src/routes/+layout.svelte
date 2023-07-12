@@ -9,12 +9,8 @@
 
 	import { nowShowingStore, allEventsStore } from '$lib/stores';
 
-
 	allEventsStore.set(data);
-
 	nowShowingStore.set($allEventsStore.eventsToday);
-
-
 </script>
 
 <!-- App Shell -->

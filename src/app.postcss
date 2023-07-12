@@ -26,9 +26,18 @@ body {
 	@apply h-full overflow-hidden bg-gradient-to-b from-purple-800 via-purple-900 to-black;
 }
 
-.splide__track--nav>.splide__list>.splide__slide {
-	@apply !rounded-3xl
-}
 .splide__track--nav>.splide__list>.splide__slide.is-active {
-  @apply border-green-500 
+  @apply border-[#188838] 
+}
+.splide__arrow {
+@apply bg-[#188838] h-12 w-12
+}
+.splide__arrow--next {
+@apply -right-[4rem] animate-pulse 
+}
+.splide__arrow--prev {
+@apply -left-[4rem] animate-pulse 
+}
+.splide__arrow svg {
+@apply text-white fill-white
 }
