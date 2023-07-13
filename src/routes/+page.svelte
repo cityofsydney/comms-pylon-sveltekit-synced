@@ -18,38 +18,41 @@
 	let main: Splide;
 	let thumbs: SplideSlide;
 
-	const options = {
-		type: 'fade',
-		lazyLoad: 'sequential',
-		speed: 600,
-		perPage: 1,
+	const goptions = {
+		lazyLoad: 'nearby',
+		preloadPages: 6,
 		perMove: 1,
-		arrows: false,
 		pagination: false,
 		gap: '1rem',
 		width: 920,
-		height: 920,
 		pauseOnHover: false
 	};
 
+	const options = {
+		...goptions,
+		type: 'fade',
+		speed: 600,
+		perPage: 1,
+		arrows: false,
+		pagination: false,
+		height: 920
+	};
+
 	const thumbsOptions = {
+		... goptions,
 		type: 'loop',
-		lazyLoad: 'sequential',
-		perMove: 1,
 		autoplay: true,
 		interval: 10000,
 		rewind: false,
-		gap: '1rem',
 		pagination: false,
-		width: 920,
 		fixedWidth: 172,
 		fixedHeight: 172,
 		cover: true,
+		perPage  : 5,
 		focus: 'center',
-		trimSpace: true,
+		trimSpace: 'move',
 		isNavigation: true,
-		updateOnMove: true,
-		pauseOnHover: false
+		updateOnMove: true
 	};
 
 	storePopup.set({
@@ -80,7 +83,7 @@
 			case 'weekend':
 				nowShowingStore.set($allEventsStore.eventsWeekend);
 				break;
-			case 'next-week':
+			case 'next week':
 				nowShowingStore.set($allEventsStore.eventsNextWeek);
 				break;
 		}
@@ -153,7 +156,7 @@
 					<div
 						class="w-full h-[70%] block absolute left-0 bottom-0 bg-gradient-to-b from-transparent to-black"
 					/>
-					<div class="absolute bottom-0 left-0 right-36 p-12  flex flex-col ">
+					<div class="absolute bottom-0 left-0 right-36 p-12 flex flex-col">
 						<h2 class="text-white text-6xl leading-tight mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-2xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
@@ -220,7 +223,7 @@
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
 							name="medium"
-							value="next-week">Next week</ListBoxItem
+							value="next week">Next week</ListBoxItem
 						>
 					</ListBox>
 					<!-- 	<div class="arrow bg-surface-100-800-token" /> -->
@@ -296,8 +299,6 @@
 		</div>
 	</div>
 </div>
-
-
 
 <style lang="postcss">
 </style>
