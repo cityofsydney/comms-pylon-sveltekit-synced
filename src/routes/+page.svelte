@@ -175,7 +175,7 @@
 						</p>
 					</div>
 					<div class="absolute bottom-8 right-8">
-						<div class="w-[100px] leading-none mb-3">Scan QR code for more info</div>
+						<div class="w-[100px] leading-none mb-2 text-sm">Scan QR code for more info</div>
 						<img src={slide.qrcode} class="w-[100px]" alt="" />
 					</div>
 					<img
