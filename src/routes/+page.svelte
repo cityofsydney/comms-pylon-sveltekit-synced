@@ -2,7 +2,7 @@
 	import '@splidejs/svelte-splide/css';
 
 	import { fade, blur, fly, slide, scale } from 'svelte/transition';
-	//import { quintOut } from 'svelte/easing';
+	import { quintOut } from 'svelte/easing';
 
 	import { onMount } from 'svelte';
 	import { nowShowingStore, allEventsStore, showFeedback } from '$lib/stores';
@@ -11,7 +11,7 @@
 	$nowShowingStore; // read value with automatic subscription
 
 	// Local
-	//let visible = true;
+	let showText = true;
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 
 	//Skeleton Popup
@@ -82,12 +82,11 @@
 		//state: (e: Record<string, boolean>) => console.log(e)
 	};
 	function handleDropdownChange(e) {
-		//visible = false;
-
-		/* setTimeout(() => {
+		showText = false;
+		setTimeout(() => {
 			//console.log('Delayed for 1 second.');
-			visible = true;
-		}, '500'); */
+			showText = true;
+		}, 500);
 
 		const value = e.target.__value;
 
@@ -291,11 +290,12 @@
 					<div
 						class="w-full h-full block absolute -bottom-1 bg-gradient-to-b from-transparent to-black rounded-xl"
 					/>
-				
-					<div class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
+					{#if showText}
+					<div in:fly={{ y: 200, duration: 500 }} 
+					out:fade class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
 						{slide.name}
 					</div>
-					
+					{/if}
 				</SplideSlide>
 			{/each}
 		</Splide>
