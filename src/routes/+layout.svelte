@@ -59,7 +59,7 @@
 		<!-- App Bar -->
 		<AppBar padding="pt-28 pb-16" background="bg-none">
 			<svelte:fragment slot="lead">
-				<h1 class="h1 text-7xl">What&#8217;s On <span class="underline">Nearby</span></h1>
+				<h1 class="h1 text-7xl">What&#8217;s On <span class="underline underline-offset-8">Nearby</span></h1>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
