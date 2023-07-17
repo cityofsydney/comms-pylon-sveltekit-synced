@@ -1,4 +1,4 @@
-export const prerender = true;
+//export const prerender = true;
 
 import type { LayoutServerLoad } from './$types';
 import { addQRcode } from '$lib/qrcode';
