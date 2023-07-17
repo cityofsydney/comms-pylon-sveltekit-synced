@@ -2,7 +2,7 @@
 	import '@splidejs/svelte-splide/css';
 
 	import { fade, blur, fly, slide, scale } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+	//import { quintOut } from 'svelte/easing';
 
 	import { onMount } from 'svelte';
 	import { nowShowingStore, allEventsStore, showFeedback } from '$lib/stores';
@@ -28,8 +28,7 @@
 
 	const goptions = {
 		lazyLoad: false,
-		preloadPages: 24,
-		perMove: 1,
+		preloadPages: 20,
 		pagination: false,
 		gap: '1rem',
 		width: 920,
@@ -41,8 +40,8 @@
 		type: 'fade',
 		speed: 600,
 		perPage: 1,
+		perMove: 1,
 		arrows: false,
-		pagination: false,
 		height: 920
 	};
 
@@ -50,14 +49,13 @@
 		...goptions,
 		type: 'loop',
 		autoplay: true,
-		interval: 10000,
+		interval: 8000,
 		rewind: false,
-		pagination: false,
-		fixedWidth: 172,
-		fixedHeight: 172,
 		cover: true,
-		perPage: 5,
-		focus: 'center',
+		perPage: 4,
+		perMove: 1,
+		fixedHeight: 218,
+ 		fixedWidth: 218,
 		trimSpace: 'move',
 		isNavigation: true,
 		updateOnMove: true
@@ -170,7 +168,7 @@
 					<div
 						class="w-full h-[70%] block absolute left-0 bottom-0 bg-gradient-to-b from-transparent to-black"
 					/>
-					<div class="absolute bottom-0 left-0 right-36 p-12 flex flex-col">
+					<div class="absolute bottom-8 left-8 right-36 flex flex-col">
 						<h2 class="text-white text-6xl leading-none mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-2xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
@@ -292,7 +290,7 @@
 					/>
 					{#if showText}
 					<div in:fly={{ y: 200, duration: 500 }} 
-					out:fade class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
+					out:fade class="absolute bottom-3 left-3 right-3 text-xl leading-tight h2">
 						{slide.name}
 					</div>
 					{/if}
