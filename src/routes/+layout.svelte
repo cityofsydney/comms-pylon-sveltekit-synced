@@ -147,9 +147,12 @@
 	<link rel="manifest" href="/site.webmanifest" />
 
 	<style lang="postcss">
-		/* .splide__track--nav > .splide__list > .splide__slide {
-			@apply rounded-xl
-		} */
+		.splide__track--nav > .splide__list > .splide__slide {
+		
+			border: 3px solid #202757
+		} 
+
+
 		.splide__track--nav > .splide__list > .splide__slide.is-active {
 			@apply border-[#188838];
 		}

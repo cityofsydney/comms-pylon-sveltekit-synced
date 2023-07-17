@@ -271,7 +271,7 @@
 				<SplideSlide data="boss" class="relative rounded-xl overflow-hidden">
 					<img src={modifyURL(slide.tileImageCloudinary[0].secure_url)} alt={slide.name} class="rounded-xl" />
 					<div
-						class="w-full h-full block absolute bottom-0 bg-gradient-to-b from-transparent to-black rounded-xl"
+						class="w-full h-full block absolute -bottom-1 bg-gradient-to-b from-transparent to-black rounded-xl"
 					/>
 					<div class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
 						{slide.name}
