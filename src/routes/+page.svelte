@@ -18,6 +18,7 @@
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 	import { formatDate } from '$lib/formatDate';
+	import {modifyURL} from '$lib/modifyURL';
 
 	let main: Splide;
 	let thumbs: SplideSlide;
@@ -179,7 +180,7 @@
 						<img src={slide.qrcode} class="w-[100px]" alt="" />
 					</div>
 					<img
-						src={slide.tileImageCloudinary[0].secure_url}
+						src={modifyURL(slide.tileImageCloudinary[0].secure_url)}
 						alt={slide.name}
 						class="object-cover"
 					/>
@@ -268,7 +269,7 @@
 		>
 			{#each $nowShowingStore as slide}
 				<SplideSlide data="boss" class="relative rounded-xl overflow-hidden">
-					<img src={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="rounded-xl" />
+					<img src={modifyURL(slide.tileImageCloudinary[0].secure_url)} alt={slide.name} class="rounded-xl" />
 					<div
 						class="w-full h-full block absolute bottom-0 bg-gradient-to-b from-transparent to-black rounded-xl"
 					/>

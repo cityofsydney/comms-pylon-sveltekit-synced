@@ -21,6 +21,8 @@
 
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 
+	import {modifyURL} from '$lib/modifyURL';
+
 /* 	import happy from '/happy.svg';
 	import neutral from '/neutral.svg';
 	import sad from '/sad.svg'; */
@@ -129,15 +131,15 @@
 	</script>
 	<!-- End Google Tag Manager -->
 
-<!-- 	{#each data.eventsToday as slide}
-		<link rel="preload" as="image" href={slide.tileImageCloudinary[0].secure_url} />
+	{#each data.eventsToday as slide}
+		<link rel="preload" as="image" href={modifyURL(slide.tileImageCloudinary[0].secure_url)} />
 	{/each}
 	{#each data.eventsWeekend as slide}
-		<link rel="preload" as="image" href={slide.tileImageCloudinary[0].secure_url} />
+		<link rel="preload" as="image" href={modifyURL(slide.tileImageCloudinary[0].secure_url)} />
 	{/each}
 	{#each data.eventsNextWeek as slide}
-		<link rel="preload" as="image" href={slide.tileImageCloudinary[0].secure_url} />
-	{/each} -->
+		<link rel="preload" as="image" href={modifyURL(slide.tileImageCloudinary[0].secure_url)} />
+	{/each} 
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
