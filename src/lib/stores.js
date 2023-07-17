@@ -6,3 +6,4 @@ import { writable } from 'svelte/store';
 //export const nowShowingStore = persisted('nowShowingStore', [])
 export const allEventsStore = writable([])
 export const nowShowingStore = writable([])
+export const showFeedback = writable(false)

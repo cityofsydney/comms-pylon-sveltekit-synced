@@ -2,7 +2,12 @@
 	import '@splidejs/svelte-splide/css';
 
 	import { onMount } from 'svelte';
-	import { nowShowingStore, allEventsStore } from '$lib/stores';
+	import { nowShowingStore, allEventsStore, showFeedback } from '$lib/stores';
+
+	// Retrieve store
+	$nowShowingStore; // read value with automatic subscription
+
+	// Local
 
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 
@@ -12,15 +17,14 @@
 	import { popup, storePopup } from '@skeletonlabs/skeleton';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
-	// Retrieve store
-	$nowShowingStore; // read value with automatic subscription
+	import { formatDate } from '$lib/formatDate';
 
 	let main: Splide;
 	let thumbs: SplideSlide;
 
 	const goptions = {
-		lazyLoad: 'nearby',
-		preloadPages: 6,
+		lazyLoad: false,
+		preloadPages: 24,
 		perMove: 1,
 		pagination: false,
 		gap: '1rem',
@@ -39,7 +43,7 @@
 	};
 
 	const thumbsOptions = {
-		... goptions,
+		...goptions,
 		type: 'loop',
 		autoplay: true,
 		interval: 10000,
@@ -48,7 +52,7 @@
 		fixedWidth: 172,
 		fixedHeight: 172,
 		cover: true,
-		perPage  : 5,
+		perPage: 5,
 		focus: 'center',
 		trimSpace: 'move',
 		isNavigation: true,
@@ -77,13 +81,13 @@
 		const value = e.target.__value;
 
 		switch (value) {
-			case 'today':
+			case 'Today':
 				nowShowingStore.set($allEventsStore.eventsToday);
 				break;
-			case 'weekend':
+			case 'This weekend':
 				nowShowingStore.set($allEventsStore.eventsWeekend);
 				break;
-			case 'next week':
+			case 'Next week':
 				nowShowingStore.set($allEventsStore.eventsNextWeek);
 				break;
 		}
@@ -160,7 +164,7 @@
 						<h2 class="text-white text-6xl leading-tight mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-2xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
-							{slide.upcomingDate} <span class="px-4">|</span>
+							{formatDate(slide.upcomingDate)}<span class="px-4">|</span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
 								><path
 									fill="#fff"
@@ -175,7 +179,7 @@
 						<img src={slide.qrcode} class="w-[100px]" alt="" />
 					</div>
 					<img
-						data-splide-lazy={slide.tileImageCloudinary[0].secure_url}
+						src={slide.tileImageCloudinary[0].secure_url}
 						alt={slide.name}
 						class="object-cover"
 					/>
@@ -190,7 +194,7 @@
 					class="btn btn-lg bg-green-700 w-48 justify-between text-white"
 					use:popup={popupCombobox}
 				>
-					<span class="capitalize h6">{comboboxValue ?? 'Today'}</span>
+					<span class="h6">{comboboxValue ?? 'Today'}</span>
 					<span
 						><svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" fill="none"
 							><path
@@ -211,19 +215,19 @@
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
 							name="medium"
-							value="today">Today</ListBoxItem
+							value="Today">Today</ListBoxItem
 						>
 						<ListBoxItem
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
 							name="medium"
-							value="weekend">This weekend</ListBoxItem
+							value="This weekend">This weekend</ListBoxItem
 						>
 						<ListBoxItem
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
 							name="medium"
-							value="next week">Next week</ListBoxItem
+							value="Next week">Next week</ListBoxItem
 						>
 					</ListBox>
 					<!-- 	<div class="arrow bg-surface-100-800-token" /> -->
@@ -249,7 +253,7 @@
 					>
 				</div>
 				<div>
-					<div class="text-xl font-bold h6">This pylon is interactive</div>
+					<div class="text-xl font-bold h6">This screen is interactive</div>
 					<div class="text-xl">Touch events below to explore</div>
 				</div>
 			</div>
@@ -263,14 +267,10 @@
 			bind:this={thumbs}
 		>
 			{#each $nowShowingStore as slide}
-				<SplideSlide data="boss" class="relative">
-					<img
-						data-splide-lazy={slide.tileImageCloudinary[0].secure_url}
-						alt={slide.name}
-						class=""
-					/>
+				<SplideSlide data="boss" class="relative rounded-xl overflow-hidden">
+					<img src={slide.tileImageCloudinary[0].secure_url} alt={slide.name} class="rounded-xl" />
 					<div
-						class="w-full h-full block absolute bottom-0 bg-gradient-to-b from-transparent to-black"
+						class="w-full h-full block absolute bottom-0 bg-gradient-to-b from-transparent to-black rounded-xl"
 					/>
 					<div class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
 						{slide.name}
