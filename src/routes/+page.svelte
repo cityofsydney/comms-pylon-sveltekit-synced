@@ -1,6 +1,9 @@
 <script lang="ts">
 	import '@splidejs/svelte-splide/css';
 
+	import { fade, blur, fly, slide, scale } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+
 	import { onMount } from 'svelte';
 	import { nowShowingStore, allEventsStore, showFeedback } from '$lib/stores';
 
@@ -8,7 +11,7 @@
 	$nowShowingStore; // read value with automatic subscription
 
 	// Local
-
+	let visible = true;
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 
 	//Skeleton Popup
@@ -18,7 +21,7 @@
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 	import { formatDate } from '$lib/formatDate';
-	import {modifyURL} from '$lib/modifyURL';
+	import { modifyURL } from '$lib/modifyURL';
 
 	let main: Splide;
 	let thumbs: SplideSlide;
@@ -79,6 +82,13 @@
 		//state: (e: Record<string, boolean>) => console.log(e)
 	};
 	function handleDropdownChange(e) {
+		visible = false;
+
+		setTimeout(() => {
+			//console.log('Delayed for 1 second.');
+			visible = true;
+		}, '500');
+
 		const value = e.target.__value;
 
 		switch (value) {
@@ -162,10 +172,10 @@
 						class="w-full h-[70%] block absolute left-0 bottom-0 bg-gradient-to-b from-transparent to-black"
 					/>
 					<div class="absolute bottom-0 left-0 right-36 p-12 flex flex-col">
-						<h2 class="text-white text-6xl leading-tight mb-5 h2 !font-normal">{slide.name}</h2>
+						<h2 class="text-white text-6xl leading-none mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-2xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
-							{formatDate(slide.upcomingDate)}<span class="px-4">|</span>
+							{formatDate(slide.upcomingDate)}<span class="px-4" />
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
 								><path
 									fill="#fff"
@@ -260,25 +270,38 @@
 			</div>
 		</div>
 
+
+	
+
 		<Splide
 			on:click={(e) => {
 				console.log(e.detail);
 			}}
+
 			options={thumbsOptions}
 			bind:this={thumbs}
 		>
 			{#each $nowShowingStore as slide}
 				<SplideSlide data="boss" class="relative rounded-xl overflow-hidden">
-					<img src={modifyURL(slide.tileImageCloudinary[0].secure_url)} alt={slide.name} class="rounded-xl" />
+					<img
+						src={modifyURL(slide.tileImageCloudinary[0].secure_url)}
+						alt={slide.name}
+						class="rounded-xl"
+					/>
 					<div
 						class="w-full h-full block absolute -bottom-1 bg-gradient-to-b from-transparent to-black rounded-xl"
 					/>
-					<div class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
+					{#if visible}
+					<div in:fly={{ y: 200, duration: 500 }} 
+					out:fade class="absolute bottom-3 left-3 right-3 text-base leading-tight h2">
 						{slide.name}
 					</div>
+					{/if}
 				</SplideSlide>
 			{/each}
 		</Splide>
+
+	
 
 		<div class="flex w-full items-center my-10">
 			<div class="flex flex-col">
