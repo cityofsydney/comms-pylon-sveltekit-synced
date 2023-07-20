@@ -11,7 +11,13 @@
 	$nowShowingStore; // read value with automatic subscription
 
 	// Local
-	let showText = true;
+	let showText: boolean = true;
+	let comboboxValue: string;
+	const feedbackButtonText: string = 'Give feedback';
+	const feedbackButtonTextAlt: string = 'Thank you';
+	let feedbackButton = feedbackButtonText;
+	let buttonsDisabled: boolean = false;
+
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 
 	//Skeleton Popup
@@ -20,9 +26,11 @@
 	import { popup, storePopup } from '@skeletonlabs/skeleton';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
+	//Helpers
 	import { formatDate } from '$lib/formatDate';
 	import { modifyURL } from '$lib/modifyURL';
 
+	// Slider Splide
 	let main: Splide;
 	let thumbs: SplideSlide;
 
@@ -55,12 +63,14 @@
 		perPage: 4,
 		perMove: 1,
 		fixedHeight: 218,
- 		fixedWidth: 218,
+		fixedWidth: 218,
 		trimSpace: 'move',
 		isNavigation: true,
 		updateOnMove: true
 	};
 
+
+	// Popup
 	storePopup.set({
 		computePosition,
 		autoUpdate,
@@ -70,8 +80,6 @@
 		arrow
 	});
 
-	let comboboxValue: string;
-
 	const popupCombobox: PopupSettings = {
 		event: 'click',
 		target: 'popupCombobox',
@@ -79,12 +87,23 @@
 		closeQuery: '.listbox-item'
 		//state: (e: Record<string, boolean>) => console.log(e)
 	};
+
+	const popupFeedBack: PopupSettings = {
+		event: 'click',
+		target: 'popupFeedBack',
+		placement: 'top',
+		//closeQuery: 'button',
+
+	};
+
+	function handlefeedbackBtnHandler() {
+		setTimeout( () => {
+			console.log('clicking button')
+			document.body.click()
+		}, 20000)
+	}
+
 	function handleDropdownChange(e) {
-		showText = false;
-		setTimeout(() => {
-			//console.log('Delayed for 1 second.');
-			showText = true;
-		}, 500);
 
 		const value = e.target.__value;
 
@@ -155,9 +174,19 @@
 	onMount(() => {
 		if (main && thumbs) {
 			main.sync(thumbs.splide);
-			console.log(main.splide);
+			//console.log(main.splide);
 		}
 	});
+
+	function handleButtonClick() {
+		feedbackButton = feedbackButtonTextAlt;
+		buttonsDisabled = true;
+
+		setTimeout(() => {
+			feedbackButton = feedbackButtonText;
+			buttonsDisabled = false;
+		}, 5000); // 10 seconds
+	}
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-start">
@@ -168,7 +197,7 @@
 					<div
 						class="w-full h-[70%] block absolute left-0 bottom-0 bg-gradient-to-b from-transparent to-black"
 					/>
-					<div class="absolute bottom-8 left-8 right-36 flex flex-col">
+					<div class="absolute bottom-8 left-8 right-[16rem] flex flex-col">
 						<h2 class="text-white text-6xl leading-none mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-2xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
@@ -267,14 +296,10 @@
 			</div>
 		</div>
 
-
-	
-
 		<Splide
 			on:click={(e) => {
 				console.log(e.detail);
 			}}
-
 			options={thumbsOptions}
 			bind:this={thumbs}
 		>
@@ -298,15 +323,17 @@
 			{/each}
 		</Splide>
 
-	
-
 		<div class="flex w-full items-center my-10">
 			<div class="flex flex-col">
 				<div class="text-xl">Powered by What’s On</div>
 				<div class="text-3xl h3">whatson.sydney</div>
 			</div>
 			<div class="ml-auto">
-				<button class="btn btn-lg h6 bg-yellow-400 text-black"
+				<button
+					id="feedbackBtn"
+					on:click={handlefeedbackBtnHandler}
+					use:popup={popupFeedBack}
+					class="btn btn-lg h6 bg-yellow-400 text-black"
 					><span
 						><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
 							><path
@@ -314,11 +341,67 @@
 								d="M22 1h-7a2.44 2.44 0 0 0-2.41 2l-.92 5.05a2.44 2.44 0 0 0 1.373 2.647 2.47 2.47 0 0 0 1.037.233H17l-.25.66a3.26 3.26 0 0 0 3 4.41.999.999 0 0 0 .92-.59l2.24-5.06A1 1 0 0 0 23 10V2a1 1 0 0 0-1-1Zm-1 8.73-1.83 4.13a1.33 1.33 0 0 1-.45-.4 1.23 1.23 0 0 1-.14-1.16l.38-1a1.68 1.68 0 0 0-.2-1.58A1.7 1.7 0 0 0 17.35 9h-3.29a.46.46 0 0 1-.35-.16.5.5 0 0 1-.09-.37l.92-5A.441.441 0 0 1 15 3h6v6.73ZM9.94 13.05H7.05l.25-.66A3.26 3.26 0 0 0 4.25 8a1 1 0 0 0-.92.59l-2.24 5.06a1 1 0 0 0-.09.4v8a1 1 0 0 0 1 1h7a2.44 2.44 0 0 0 2.41-2l.92-5a2.44 2.44 0 0 0-.53-2 2.47 2.47 0 0 0-1.86-1Zm-.48 7.58A.44.44 0 0 1 9 21H3v-6.73l1.83-4.13c.179.097.333.234.45.4a1.23 1.23 0 0 1 .14 1.16l-.38 1a1.68 1.68 0 0 0 .2 1.58 1.7 1.7 0 0 0 1.41.74h3.29a.458.458 0 0 1 .35.16.5.5 0 0 1 .09.37l-.92 5.08Z"
 							/></svg
 						></span
-					><span>Give feedback</span></button
+					><span>{feedbackButton}</span></button
 				>
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="card p-8 w-[280px] shadow-xl z-20 !bg-black" data-popup="popupFeedBack">
+	<div class="space-y-4">
+		<figure class="p-8">
+			<img src="/qrcode-gov.png" alt="" />
+		</figure>
+		<p>Scan the QR code to take the survey</p>
+
+		<p class="text-white font-semibold text-xl">Let us know what you think.</p>
+		<div class="flex items-center justify-evenly space-x-8">
+			<button disabled={buttonsDisabled} id="btnHappy" on:click={handleButtonClick}>
+				<svg
+					id="imgHappy"
+					class="active:scale-125 text-3xl"
+					width="27"
+					height="28"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						d="M16.648 16.973a5.014 5.014 0 0 1-6.293 0 1.335 1.335 0 1 0-1.707 2.053 7.573 7.573 0 0 0 9.707 0 1.335 1.335 0 1 0-1.707-2.053Zm-7.147-4.307a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm8-2.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Zm-4-9.333a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Z"
+						fill="#8CE0AA"
+					/></svg
+				>
+			</button>
+			<button disabled={buttonsDisabled} id="btnNeutral" on:click={handleButtonClick}>
+				<svg
+					width="27"
+					height="28"
+					class="active:scale-125"
+					id="imgNeutral"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						d="M9.501 12.666a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm8 4h-8a1.334 1.334 0 0 0 0 2.667h8a1.333 1.333 0 0 0 0-2.667Zm0-6.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Zm-4-9.333a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Z"
+						fill="#FEFADD"
+					/></svg
+				>
+			</button>
+			<button disabled={buttonsDisabled} id="btnAngry" on:click={handleButtonClick}>
+				<svg
+					width="27"
+					height="28"
+					class="active:scale-125"
+					id="imgAngry"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						d="M8.648 18.44a1.333 1.333 0 0 0-.173 1.866 1.333 1.333 0 0 0 1.88.173 5.013 5.013 0 0 1 6.293 0 1.335 1.335 0 0 0 1.88-.173 1.333 1.333 0 0 0-.173-1.867 7.746 7.746 0 0 0-9.707 0Zm.853-5.774a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm4-12a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Zm4-14.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Z"
+						fill="#EE9AB4"
+					/></svg
+				>
+			</button>
+		</div>
+	</div>
+	<div class="arrow bg-black" />
 </div>
 
 <style lang="postcss">

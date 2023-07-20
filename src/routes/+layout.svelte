@@ -53,13 +53,13 @@
 <!-- App Shell -->
 <AppShell
 	slotHeader="flex items-center justify-center"
-	slotFooter="py-16 flex items-center justify-center relative"
+	slotFooter="py-4 lg:py-16 flex items-center justify-center relative"
 >
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar padding="pt-28 pb-16" background="bg-none">
+		<AppBar padding="py-4 lg:pt-28 lg:pb-16" background="bg-none">
 			<svelte:fragment slot="lead">
-				<h1 class="h1 text-7xl">What&#8217;s On <span class="underline underline-offset-8">Nearby</span></h1>
+				<h1 class="h1 lg:text-7xl">What&#8217;s On <span class="underline lg:underline-offset-9">Nearby</span></h1>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
@@ -111,7 +111,7 @@
 			</div>
 		{/if}
 
-		<img src="cos-logo.svg" alt="" class="w-[400px]" />
+		<img src="cos-logo.svg" alt="" class="w-[100px] lg:w-[400px]" />
 	</svelte:fragment>
 </AppShell>
 
