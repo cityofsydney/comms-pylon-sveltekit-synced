@@ -12,8 +12,8 @@
 
 	// Local
 	let showText = true;
-	const feedbackButtonText: string = 'Give feedback';
-	const feedbackButtonTextAlt: string = 'Thank you';
+	let feedbackButtonText: string = 'Give feedback';
+	let feedbackButtonTextAlt: string = 'Thank you';
 	let feedbackButton = feedbackButtonText;
 	let buttonsDisabled: boolean = false;
 
@@ -119,10 +119,10 @@
 	}
 
 	function handlefeedbackBtnHandler() {
-		/* setTimeout( () => {
+		setTimeout( () => {
 			console.log('clicking button')
 			document.body.click()
-		}, 20000) */
+		}, 10000)
 	}
 	function handleButtonClick() {
 		feedbackButton = feedbackButtonTextAlt;
@@ -131,7 +131,7 @@
 		setTimeout(() => {
 			feedbackButton = feedbackButtonText;
 			buttonsDisabled = false;
-		}, 20000); // 10 seconds
+		}, 10000); // 10 seconds
 	}
 
 /* 	const dates = [
@@ -360,22 +360,22 @@
 </div>
 
 
-<div class="card p-8 w-[240px] shadow-xl z-20 !bg-purple-900" data-popup="popupFeedBack">
+<div class="card p-8 w-[240px] shadow-xl z-20 !bg-yellow-400" data-popup="popupFeedBack">
 	<div class="space-y-6">
 		
-		<p class="text-white font-semibold text-2xl">Let us know what you think</p>
+		<p class="text-black font-semibold text-2xl">Let us know what you think</p>
 		<div class="flex items-center justify-evenly space-x-8">
 			<button disabled={buttonsDisabled} id="btnHappy" on:click={handleButtonClick}>
 				<svg
 					id="imgHappy"
-					class="active:scale-125 text-3xl"
+					class="active:scale-125 fill-green-800"
 					width="27"
 					height="28"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					><path
 						d="M16.648 16.973a5.014 5.014 0 0 1-6.293 0 1.335 1.335 0 1 0-1.707 2.053 7.573 7.573 0 0 0 9.707 0 1.335 1.335 0 1 0-1.707-2.053Zm-7.147-4.307a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm8-2.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Zm-4-9.333a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Z"
-						fill="#8CE0AA"
+						
 					/></svg
 				>
 			</button>
@@ -383,13 +383,13 @@
 				<svg
 					width="27"
 					height="28"
-					class="active:scale-125"
+					class="active:scale-125 fill-slate-800"
 					id="imgNeutral"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					><path
 						d="M9.501 12.666a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm8 4h-8a1.334 1.334 0 0 0 0 2.667h8a1.333 1.333 0 0 0 0-2.667Zm0-6.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Zm-4-9.333a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Z"
-						fill="#FEFADD"
+						
 					/></svg
 				>
 			</button>
@@ -397,25 +397,27 @@
 				<svg
 					width="27"
 					height="28"
-					class="active:scale-125"
+					class="active:scale-125 fill-red-800"
 					id="imgAngry"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					><path
 						d="M8.648 18.44a1.333 1.333 0 0 0-.173 1.866 1.333 1.333 0 0 0 1.88.173 5.013 5.013 0 0 1 6.293 0 1.335 1.335 0 0 0 1.88-.173 1.333 1.333 0 0 0-.173-1.867 7.746 7.746 0 0 0-9.707 0Zm.853-5.774a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm4-12a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Zm4-14.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Z"
-						fill="#EE9AB4"
+						
 					/></svg
 				>
 			</button>
 		</div>
 
-		<p class="text-xl">Scan the QR code to take the survey</p>
-		<figure class="px-10">
-			<img src="/qrcode-test.png" alt="" />
+		<p class="text-xl text-black">Scan the QR code to take the survey</p>
+		<figure class="flex items-center justify-center">
+			
+				<img src="/qrcode-survey.svg" width="104" height="104" alt="" class="p-1 bg-white" />
+			
 		</figure>
 
 	</div>
-	<div class="arrow bg-purple-900" />
+	<div class="arrow bg-yellow-400" />
 </div>
 
 <style lang="postcss">
