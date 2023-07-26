@@ -11,12 +11,12 @@
 	$nowShowingStore; // read value with automatic subscription
 
 	// Local
+	let disabledIsRunning = false;
 	let showText = true;
 	let feedbackButtonText: string = 'Give feedback';
-	let feedbackButtonTextAlt: string = 'Thank you';
+	let feedbackButtonTextAlt: string = 'Thank you!';
 	let feedbackButton = feedbackButtonText;
 	let buttonsDisabled: boolean = false;
-
 
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 
@@ -61,7 +61,7 @@
 		perPage: 4,
 		perMove: 1,
 		fixedHeight: 218,
- 		fixedWidth: 218,
+		fixedWidth: 218,
 		trimSpace: 'move',
 		isNavigation: true,
 		updateOnMove: true
@@ -89,11 +89,9 @@
 	const popupFeedBack: PopupSettings = {
 		event: 'click',
 		target: 'popupFeedBack',
-		placement: 'top',
+		placement: 'top'
 		//closeQuery: 'button',
-
 	};
-
 
 	function handleDropdownChange(e) {
 		showText = false;
@@ -119,22 +117,24 @@
 	}
 
 	function handlefeedbackBtnHandler() {
-		setTimeout( () => {
-			console.log('clicking button')
-			document.body.click()
-		}, 10000)
+		setTimeout(() => {
+			console.log('clicking button');
+			document.body.click();
+		}, 10000);
 	}
 	function handleButtonClick() {
 		feedbackButton = feedbackButtonTextAlt;
+		disabledIsRunning = true;
 		buttonsDisabled = true;
 
 		setTimeout(() => {
 			feedbackButton = feedbackButtonText;
 			buttonsDisabled = false;
+			disabledIsRunning = false;
 		}, 10000); // 10 seconds
 	}
 
-/* 	const dates = [
+	/* 	const dates = [
 		'2023-07-01',
 		'2023-07-02',
 		'2023-07-03',
@@ -177,7 +177,7 @@
 
 	//console.log(filteredDates);
 
-/* 	const weekendDates = filteredDates.filter((date) => {
+	/* 	const weekendDates = filteredDates.filter((date) => {
 		const dayOfWeek = new Date(date).getDay();
 		return dayOfWeek === 6 || dayOfWeek === 0;
 	});
@@ -231,7 +231,7 @@
 			<div class="flex items-center">
 				<h2 class="h1 text-white text-4xl mr-10">What&#8217;s On</h2>
 				<button
-					class="btn btn-lg bg-green-700 w-48 justify-between text-white"
+					class="btn btn-lg bg-green-700 w-48 justify-between text-white outline-none"
 					use:popup={popupCombobox}
 				>
 					<span class="h6">{comboboxValue ?? 'Today'}</span>
@@ -251,7 +251,7 @@
 				>
 					<ListBox class="text-white ">
 						<ListBoxItem
-						class="rounded-none"
+							class="rounded-none"
 							active="bg-green-700"
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
@@ -259,15 +259,15 @@
 							value="Today">Today</ListBoxItem
 						>
 						<ListBoxItem
-						class="rounded-none"
-						active="bg-green-700"
+							class="rounded-none"
+							active="bg-green-700"
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
 							name="medium"
 							value="This weekend">This weekend</ListBoxItem
 						>
 						<ListBoxItem
-						active="bg-green-700"
+							active="bg-green-700"
 							class="rounded-none"
 							bind:group={comboboxValue}
 							on:change={handleDropdownChange}
@@ -275,7 +275,7 @@
 							value="Next week">Next week</ListBoxItem
 						>
 					</ListBox>
-					 	<div class="arrow bg-green" />
+					<div class="arrow bg-green" />
 				</div>
 			</div>
 			<div class="ml-auto flex items-center">
@@ -304,14 +304,10 @@
 			</div>
 		</div>
 
-
-	
-
 		<Splide
 			on:click={(e) => {
 				console.log(e.detail);
 			}}
-
 			options={thumbsOptions}
 			bind:this={thumbs}
 		>
@@ -326,16 +322,17 @@
 						class="w-full h-full block absolute -bottom-1 bg-gradient-to-b from-transparent to-black rounded-xl"
 					/>
 					{#if showText}
-					<div in:fly={{ y: 200, duration: 500 }} 
-					out:fade class="absolute bottom-3 left-3 right-3 text-xl leading-tight h2">
-						{slide.name}
-					</div>
+						<div
+							in:fly={{ y: 200, duration: 500 }}
+							out:fade
+							class="absolute bottom-3 left-3 right-3 text-xl leading-tight h2"
+						>
+							{slide.name}
+						</div>
 					{/if}
 				</SplideSlide>
 			{/each}
 		</Splide>
-
-	
 
 		<div class="flex w-full items-center my-10">
 			<div class="flex flex-col">
@@ -343,8 +340,10 @@
 				<div class="text-3xl h3">whatson.sydney</div>
 			</div>
 			<div class="ml-auto">
-				<button 
-				on:click={handlefeedbackBtnHandler} use:popup={popupFeedBack} class="btn btn-lg h6 bg-yellow-400 text-black"
+				<button
+					on:click={handlefeedbackBtnHandler}
+					use:popup={popupFeedBack}
+					class="btn btn-lg w-52 h6 bg-yellow-400 text-black outline-none"
 					><span
 						><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
 							><path
@@ -352,17 +351,15 @@
 								d="M22 1h-7a2.44 2.44 0 0 0-2.41 2l-.92 5.05a2.44 2.44 0 0 0 1.373 2.647 2.47 2.47 0 0 0 1.037.233H17l-.25.66a3.26 3.26 0 0 0 3 4.41.999.999 0 0 0 .92-.59l2.24-5.06A1 1 0 0 0 23 10V2a1 1 0 0 0-1-1Zm-1 8.73-1.83 4.13a1.33 1.33 0 0 1-.45-.4 1.23 1.23 0 0 1-.14-1.16l.38-1a1.68 1.68 0 0 0-.2-1.58A1.7 1.7 0 0 0 17.35 9h-3.29a.46.46 0 0 1-.35-.16.5.5 0 0 1-.09-.37l.92-5A.441.441 0 0 1 15 3h6v6.73ZM9.94 13.05H7.05l.25-.66A3.26 3.26 0 0 0 4.25 8a1 1 0 0 0-.92.59l-2.24 5.06a1 1 0 0 0-.09.4v8a1 1 0 0 0 1 1h7a2.44 2.44 0 0 0 2.41-2l.92-5a2.44 2.44 0 0 0-.53-2 2.47 2.47 0 0 0-1.86-1Zm-.48 7.58A.44.44 0 0 1 9 21H3v-6.73l1.83-4.13c.179.097.333.234.45.4a1.23 1.23 0 0 1 .14 1.16l-.38 1a1.68 1.68 0 0 0 .2 1.58 1.7 1.7 0 0 0 1.41.74h3.29a.458.458 0 0 1 .35.16.5.5 0 0 1 .09.37l-.92 5.08Z"
 							/></svg
 						></span
-					><span>Give feedback</span></button
+					><span>{feedbackButton}</span></button
 				>
 			</div>
 		</div>
 	</div>
 </div>
 
-
 <div class="card p-8 w-[240px] shadow-xl z-20 !bg-yellow-400" data-popup="popupFeedBack">
 	<div class="space-y-6">
-		
 		<p class="text-black font-semibold text-2xl">Let us know what you think</p>
 		<div class="flex items-center justify-evenly space-x-8">
 			<button disabled={buttonsDisabled} id="btnHappy" on:click={handleButtonClick}>
@@ -375,7 +372,6 @@
 					xmlns="http://www.w3.org/2000/svg"
 					><path
 						d="M16.648 16.973a5.014 5.014 0 0 1-6.293 0 1.335 1.335 0 1 0-1.707 2.053 7.573 7.573 0 0 0 9.707 0 1.335 1.335 0 1 0-1.707-2.053Zm-7.147-4.307a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm8-2.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Zm-4-9.333a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Z"
-						
 					/></svg
 				>
 			</button>
@@ -389,7 +385,6 @@
 					xmlns="http://www.w3.org/2000/svg"
 					><path
 						d="M9.501 12.666a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm8 4h-8a1.334 1.334 0 0 0 0 2.667h8a1.333 1.333 0 0 0 0-2.667Zm0-6.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Zm-4-9.333a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Z"
-						
 					/></svg
 				>
 			</button>
@@ -403,7 +398,6 @@
 					xmlns="http://www.w3.org/2000/svg"
 					><path
 						d="M8.648 18.44a1.333 1.333 0 0 0-.173 1.866 1.333 1.333 0 0 0 1.88.173 5.013 5.013 0 0 1 6.293 0 1.335 1.335 0 0 0 1.88-.173 1.333 1.333 0 0 0-.173-1.867 7.746 7.746 0 0 0-9.707 0Zm.853-5.774a1.334 1.334 0 1 0 0-2.667 1.334 1.334 0 0 0 0 2.667Zm4-12a13.333 13.333 0 1 0 0 26.666 13.333 13.333 0 0 0 0-26.666Zm0 24a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Zm4-14.667a1.333 1.333 0 1 0 0 2.666 1.333 1.333 0 0 0 0-2.666Z"
-						
 					/></svg
 				>
 			</button>
@@ -411,11 +405,8 @@
 
 		<p class="text-xl text-black">Scan the QR code to take the survey</p>
 		<figure class="flex items-center justify-center">
-			
-				<img src="/qrcode-survey.svg" width="104" height="104" alt="" class="p-1 bg-white" />
-			
+			<img src="/qrcode-survey.svg" width="104" height="104" alt="" class="p-1 bg-white" />
 		</figure>
-
 	</div>
 	<div class="arrow bg-yellow-400" />
 </div>
