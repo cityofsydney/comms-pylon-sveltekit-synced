@@ -21,8 +21,8 @@ export const load = (async () => {
 
 	return {
 		eventsToday: await fetchEvents('today'),
-		eventsWeekend: await fetchEvents('weekend'),
-		eventsNextWeek: await fetchEvents('next-week'),
+		//eventsWeekend: await fetchEvents('weekend'),
+		//eventsNextWeek: await fetchEvents('next-week'),
 	};
 
 }) satisfies LayoutServerLoad;

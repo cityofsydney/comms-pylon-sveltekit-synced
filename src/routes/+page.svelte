@@ -134,56 +134,6 @@
 		}, 10000); // 10 seconds
 	}
 
-	/* 	const dates = [
-		'2023-07-01',
-		'2023-07-02',
-		'2023-07-03',
-		'2023-07-04',
-		'2023-07-05',
-		'2023-07-06',
-		'2023-07-07',
-		'2023-07-08',
-		'2023-07-09',
-		'2023-07-10',
-		'2023-07-11',
-		'2023-07-12',
-		'2023-07-13',
-		'2023-07-14',
-		'2023-07-15',
-		'2023-07-16',
-		'2023-07-17',
-		'2023-07-18',
-		'2023-07-19',
-		'2023-07-20',
-		'2023-07-21',
-		'2023-07-22',
-		'2023-07-23',
-		'2023-07-24',
-		'2023-07-25',
-		'2023-07-26',
-		'2023-07-27',
-		'2023-07-28',
-		'2023-07-29',
-		'2023-07-30',
-		'2023-07-31'
-	];
-
-	const currentDate = new Date();
-
-	const filteredDates = dates.filter((date) => {
-		const dateObj = new Date(date);
-		return dateObj >= currentDate;
-	}); */
-
-	//console.log(filteredDates);
-
-	/* 	const weekendDates = filteredDates.filter((date) => {
-		const dayOfWeek = new Date(date).getDay();
-		return dayOfWeek === 6 || dayOfWeek === 0;
-	});
-
-	console.log(weekendDates); */
-
 	onMount(() => {
 		if (main && thumbs) {
 			main.sync(thumbs.splide);
@@ -227,8 +177,8 @@
 			{/each}
 		</Splide>
 
-		<div class="flex items-center w-full my-10">
-			<div class="flex items-center">
+		<div class="flex items-center justify-center  w-full my-10">
+			<!-- <div class="flex items-center">
 				<h2 class="h1 text-white text-4xl mr-10">What&#8217;s On</h2>
 				<button
 					class="btn btn-lg bg-green-700 w-48 justify-between text-white outline-none"
@@ -277,8 +227,8 @@
 					</ListBox>
 					<div class="arrow bg-green" />
 				</div>
-			</div>
-			<div class="ml-auto flex items-center">
+			</div> -->
+			<div class="flex items-center">
 				<div class="shrink pr-5">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -307,6 +257,11 @@
 		<Splide
 			on:click={(e) => {
 				console.log(e.detail);
+
+				setTimeout(function() {
+					console.log('fake click')
+					document.body.click();
+					}, 30000);
 			}}
 			options={thumbsOptions}
 			bind:this={thumbs}
@@ -361,8 +316,8 @@
 <div class="card p-8 w-[240px] shadow-xl z-20 !bg-yellow-400" data-popup="popupFeedBack">
 	<div class="space-y-6">
 		<p class="text-black font-semibold text-2xl">Let us know what you think</p>
-		<div class="flex items-center justify-evenly space-x-8">
-			<button disabled={buttonsDisabled} id="btnHappy" on:click={handleButtonClick}>
+		<div class="flex items-center justify-evenly space-x-6">
+			<button class="bg-white rounded-full p-2 shadow-md" disabled={buttonsDisabled} id="btnHappy" on:click={handleButtonClick}>
 				<svg
 					id="imgHappy"
 					class="active:scale-125 fill-green-800"
@@ -375,11 +330,11 @@
 					/></svg
 				>
 			</button>
-			<button disabled={buttonsDisabled} id="btnNeutral" on:click={handleButtonClick}>
+			<button class="bg-white rounded-full p-2 shadow-md" disabled={buttonsDisabled} id="btnNeutral" on:click={handleButtonClick}>
 				<svg
 					width="27"
 					height="28"
-					class="active:scale-125 fill-slate-800"
+					class="active:scale-125 fill-orange-500"
 					id="imgNeutral"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -388,11 +343,11 @@
 					/></svg
 				>
 			</button>
-			<button disabled={buttonsDisabled} id="btnAngry" on:click={handleButtonClick}>
+			<button class="bg-white rounded-full p-2 shadow-md" disabled={buttonsDisabled} id="btnAngry" on:click={handleButtonClick}>
 				<svg
 					width="27"
 					height="28"
-					class="active:scale-125 fill-red-800"
+					class="active:scale-125 fill-red-600"
 					id="imgAngry"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
