@@ -20,7 +20,7 @@ export const load = (async () => {
 	//console.log(Object.keys(store).length)
 
 	return {
-		eventsToday: await fetchEvents('today'),
+		eventsToday: await fetchEvents('next-thirty'),
 		//eventsWeekend: await fetchEvents('weekend'),
 		//eventsNextWeek: await fetchEvents('next-week'),
 	};
