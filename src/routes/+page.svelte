@@ -123,7 +123,13 @@
 			document.body.click();
 		}, 10000);
 	}
-	function handleButtonClick() {
+	function handleButtonClick(event) {
+		let buttonType = event.target.id;
+		window.dataLayer = window.dataLayer || [];
+		dataLayer.push({
+			event: buttonType
+		});
+
 		feedbackButton = feedbackButtonTextAlt;
 		disabledIsRunning = true;
 		buttonsDisabled = true;
@@ -178,7 +184,7 @@
 			{/each}
 		</Splide>
 
-		<div class="flex items-center justify-center  w-full my-10">
+		<div class="flex items-center justify-center w-full my-10">
 			<!-- <div class="flex items-center">
 				<h2 class="h1 text-white text-4xl mr-10">What&#8217;s On</h2>
 				<button
@@ -257,13 +263,16 @@
 
 		<Splide
 			on:click={(e) => {
-				console.log(e.detail);
-				//datalayer.push
+				window.dataLayer = window.dataLayer || [];
+				dataLayer.push({
+					event: 'slideClick',
+					slug: e.detail.Slide.slide.dataset.slug
+				});
 
-				setTimeout(function() {
-					console.log('fake click')
+				setTimeout(function () {
+					console.log('fake click');
 					document.body.click();
-					}, 30000);
+				}, 30000);
 			}}
 			options={thumbsOptions}
 			bind:this={thumbs}
@@ -319,7 +328,12 @@
 	<div class="space-y-6">
 		<p class="text-black font-semibold text-2xl">Let us know what you think</p>
 		<div class="flex items-center justify-evenly space-x-6">
-			<button class="bg-white rounded-full p-2 shadow-md" disabled={buttonsDisabled} id="btnHappy" on:click={handleButtonClick}>
+			<button
+				class="bg-white rounded-full p-2 shadow-md"
+				disabled={buttonsDisabled}
+				id="btnHappy"
+				on:click={handleButtonClick}
+			>
 				<svg
 					id="imgHappy"
 					class="active:scale-125 fill-green-800"
@@ -332,7 +346,12 @@
 					/></svg
 				>
 			</button>
-			<button class="bg-white rounded-full p-2 shadow-md" disabled={buttonsDisabled} id="btnNeutral" on:click={handleButtonClick}>
+			<button
+				class="bg-white rounded-full p-2 shadow-md"
+				disabled={buttonsDisabled}
+				id="btnNeutral"
+				on:click={handleButtonClick}
+			>
 				<svg
 					width="27"
 					height="28"
@@ -345,7 +364,12 @@
 					/></svg
 				>
 			</button>
-			<button class="bg-white rounded-full p-2 shadow-md" disabled={buttonsDisabled} id="btnAngry" on:click={handleButtonClick}>
+			<button
+				class="bg-white rounded-full p-2 shadow-md"
+				disabled={buttonsDisabled}
+				id="btnAngry"
+				on:click={handleButtonClick}
+			>
 				<svg
 					width="27"
 					height="28"
