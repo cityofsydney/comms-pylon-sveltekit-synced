@@ -117,6 +117,7 @@
 	}
 
 	function handlefeedbackBtnHandler() {
+		//Data pUsh
 		setTimeout(() => {
 			console.log('clicking button');
 			document.body.click();
@@ -257,6 +258,7 @@
 		<Splide
 			on:click={(e) => {
 				console.log(e.detail);
+				//datalayer.push
 
 				setTimeout(function() {
 					console.log('fake click')
@@ -267,7 +269,7 @@
 			bind:this={thumbs}
 		>
 			{#each $nowShowingStore as slide}
-				<SplideSlide data="boss" class="relative rounded-xl overflow-hidden">
+				<SplideSlide data="boss" data-slug={slide.slug} class="relative rounded-xl overflow-hidden">
 					<img
 						src={modifyURL(slide.tileImageCloudinary[0].secure_url)}
 						alt={slide.name}
