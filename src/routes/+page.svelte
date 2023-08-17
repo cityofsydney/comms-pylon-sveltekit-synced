@@ -161,7 +161,7 @@
 						<h2 class="text-white text-6xl leading-none mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-4xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
-							{formatDate(slide.upcomingDate)}<span class="px-2" />
+							{formatDate(slide.upcomingDate)} {slide.eventUpcomingTime}<span class="px-2" />
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
 								><path
 									fill="#fff"
