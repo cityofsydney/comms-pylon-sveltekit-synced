@@ -302,8 +302,8 @@
 
 		<div class="flex w-full items-center my-10">
 			<div class="flex flex-col">
-				<div class="text-xl">Powered by What’s On</div>
-				<div class="text-3xl h3">whatson.sydney</div>
+				<div class="text-xl">Powered by whatson.sydney</div>
+				<div class="text-2xl h3">List your event free</div>
 			</div>
 			<div class="ml-auto">
 				<button
