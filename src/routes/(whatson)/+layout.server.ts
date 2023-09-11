@@ -1,6 +1,6 @@
 //export const prerender = true;
 
-import type { LayoutServerLoad } from './$types';
+import type { LayoutServerLoad } from '../$types';
 import { addQRcode } from '$lib/qrcode';
 //import { get } from 'svelte/store'
 //import { nowShowingStore, allEventsStore } from '$lib/stores';
