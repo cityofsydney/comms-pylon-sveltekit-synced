@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	import { PUBLIC_CITYSWITCH_DATOCMS_API_TOKEN } from '$env/static/public';
+	import { PUBLIC_EMERGENCY_SCREENS_DATOCMS_API_TOKEN } from '$env/static/public';
 	import { subscribeToQuery } from 'datocms-listen';
 
 	// +page.ts
@@ -13,24 +13,27 @@
 	// Stores
 	import { emergencyData, emergencyStatus } from '$lib/stores';
 
-	let promise = getRandomNumber();
+	let promise = getRealTimeData();
 
-	async function getRandomNumber() {
+	async function getRealTimeData() {
 		const unsubscribe = await subscribeToQuery({
 			query: `query MyQuery {
-				allPages {
-					id
+				message {
 					title
+					id
 				}
-			}`,
+				}`,
 			variables: { first: 10 },
-			token: PUBLIC_CITYSWITCH_DATOCMS_API_TOKEN,
+			token: PUBLIC_EMERGENCY_SCREENS_DATOCMS_API_TOKEN,
 			preview: true,
+			
 			onUpdate: (update) => {
 				// response is the GraphQL response
 				//console.log(update.response.data);
 				const data = update.response.data;
-				emergencyData.set(data.allPages);
+				console.log(data)
+				emergencyData.set(data.message);
+				///return data.message
 			},
 			onStatusChange: (status) => {
 				// status can be "connected", "connecting" or "closed"
@@ -44,11 +47,11 @@
 				console.log(error.message);
 			},
 			onEvent: (event) => {
-				//console.log('event: ',event)
+				console.log('event: ',event)
 			}
 		});
 
-		return unsubscribe;
+		return unsubscribe.Response;
 	}
 
 	onMount(() => {
@@ -57,11 +60,11 @@
 </script>
 
 {#await promise}
-	<p>... {$emergencyStatus}</p>
-{:then data}
-	{#each $emergencyData as item}
-		{item.title}
-	{/each}
+	<p>{$emergencyStatus}</p>
+{:then success}
+
+{success}
+	{$emergencyData.title}
 {:catch error}
 	<p style="color: red">{error.message}</p>
 {/await}
