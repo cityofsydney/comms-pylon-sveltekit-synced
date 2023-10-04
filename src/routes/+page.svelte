@@ -124,6 +124,10 @@
 		}, 10000);
 	}
 	function handleButtonClick(event) {
+		let screendetails = document.getElementById('screendetails');
+		screendetails.innerHTML =
+			'====from handleButtonClickhandleButtonClick=========' + display_unit_id;
+
 		let buttonType = event.target.id;
 		window.dataLayer = window.dataLayer || [];
 		dataLayer.push({
@@ -396,16 +400,14 @@
 <svelte:head>
 	<script>
 		function BroadSignPlay() {
-			let display_unit_id = 'None';
 			if (typeof BroadSignObject !== 'undefined') {
 				//display_unit_id = BroadSignObject['display_unit_id'];
-				display_unit_id = 'Found display_unit_id';
+				display_unit_id = BroadSignObject['display_unit_id'];
 			} else {
 				display_unit_id = "Can't find  display_unit_id";
 			}
-			alert(display_unit_id);
 			let screendetails = document.getElementById('screendetails');
-			screendetails.innerHTML = display_unit_id;
+			screendetails.innerHTML = '=============' + display_unit_id;
 		}
 	</script>
 </svelte:head>
