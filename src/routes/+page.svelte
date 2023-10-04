@@ -77,7 +77,7 @@
 	});
 
 	let comboboxValue: string;
-	let display_unit_id = null;
+	let display_unit_id = 'This is screen details testing';
 	const popupCombobox: PopupSettings = {
 		event: 'click',
 		target: 'popupCombobox',
@@ -150,16 +150,18 @@
 		function BroadSignPlay() {
 			if (typeof BroadSignObject !== 'undefined') {
 				display_unit_id = BroadSignObject.display_unit_id;
-				console.log(display_unit_id);
 			} else {
-				console.log("Can't find BroadSignObject");
+				display_unit_id = "Can't find  display_unit_id";
 			}
 		}
+		let screendetails = document.getElementById('screendetails');
+		screendetails.innerHTML = display_unit_id;
 	});
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-start">
 	<div class="flex flex-col items-center min-h-[920px]">
+		<div id="screendetails" />
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
 				<SplideSlide class="relative">
