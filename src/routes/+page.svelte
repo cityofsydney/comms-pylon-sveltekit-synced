@@ -124,9 +124,9 @@
 		}, 10000);
 	}
 	function handleButtonClick(event) {
-		let screendetails = document.getElementById('screendetails');
-		screendetails.innerHTML =
-			'====from handleButtonClickhandleButtonClick=========' + display_unit_id;
+		display_unit_id = document.getElementById('screendetails').value;
+		var myDiv = document.getElementById('myDiv');
+		myDiv.innerHTML = display_unit_id;
 
 		let buttonType = event.target.id;
 		window.dataLayer = window.dataLayer || [];
@@ -155,7 +155,8 @@
 
 <div class="container h-full mx-auto flex justify-center items-start">
 	<div class="flex flex-col items-center min-h-[920px]">
-		<div id="screendetails">Testing screen</div>
+		<div id="myDiv">testing</div>
+		<input type="text" id="screendetails" value="" />
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
 				<SplideSlide class="relative">
@@ -407,7 +408,7 @@
 				display_unit_id = "Can't find  display_unit_id";
 			}
 			let screendetails = document.getElementById('screendetails');
-			screendetails.innerHTML = '=============' + display_unit_id;
+			screendetails.value = display_unit_id;
 		}
 	</script>
 </svelte:head>
