@@ -142,7 +142,7 @@
 	}
 	function BroadSignPlay() {
 		if (typeof BroadSignObject !== 'undefined') {
-			display_unit_id = 'Found  display_unit_id';
+			display_unit_id = BroadSignObject['display_unit_id'];
 		} else {
 			display_unit_id = "Can't find  display_unit_id";
 		}
