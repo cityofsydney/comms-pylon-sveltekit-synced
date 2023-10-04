@@ -140,16 +140,7 @@
 			disabledIsRunning = false;
 		}, 10000); // 10 seconds
 	}
-	function BroadSignPlay() {
-		if (typeof BroadSignObject !== 'undefined') {
-			//display_unit_id = BroadSignObject['display_unit_id'];
-			display_unit_id = 'Found display_unit_id';
-		} else {
-			display_unit_id = "Can't find  display_unit_id";
-		}
-		let screendetails = document.getElementById('screendetails');
-		screendetails.innerHTML = display_unit_id;
-	}
+
 	onMount(() => {
 		if (main && thumbs) {
 			main.sync(thumbs.splide);
@@ -402,6 +393,22 @@
 	</div>
 	<div class="arrow bg-yellow-400" />
 </div>
+<svelte:head>
+	<script>
+		function BroadSignPlay() {
+			let display_unit_id = 'None';
+			if (typeof BroadSignObject !== 'undefined') {
+				//display_unit_id = BroadSignObject['display_unit_id'];
+				display_unit_id = 'Found display_unit_id';
+			} else {
+				display_unit_id = "Can't find  display_unit_id";
+			}
+			alert(display_unit_id);
+			let screendetails = document.getElementById('screendetails');
+			screendetails.innerHTML = display_unit_id;
+		}
+	</script>
+</svelte:head>
 
 <style lang="postcss">
 </style>
