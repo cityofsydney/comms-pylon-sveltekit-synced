@@ -140,29 +140,27 @@
 			disabledIsRunning = false;
 		}, 10000); // 10 seconds
 	}
-
+	function BroadSignPlay() {
+		if (typeof BroadSignObject !== 'undefined') {
+			//display_unit_id = BroadSignObject['display_unit_id'];
+			display_unit_id = 'Found display_unit_id';
+		} else {
+			display_unit_id = "Can't find  display_unit_id";
+		}
+		let screendetails = document.getElementById('screendetails');
+		screendetails.innerHTML = display_unit_id;
+	}
 	onMount(() => {
 		if (main && thumbs) {
 			main.sync(thumbs.splide);
 			console.log(main.splide);
-		}
-
-		function BroadSignPlay() {
-			if (typeof BroadSignObject !== 'undefined') {
-				//display_unit_id = BroadSignObject['display_unit_id'];
-				display_unit_id = 'Found display_unit_id';
-			} else {
-				display_unit_id = "Can't find  display_unit_id";
-			}
-			let screendetails = document.getElementById('screendetails');
-			screendetails.innerHTML = display_unit_id;
 		}
 	});
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-start">
 	<div class="flex flex-col items-center min-h-[920px]">
-		<div id="screendetails">Testing</div>
+		<div id="screendetails">Testing screen</div>
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
 				<SplideSlide class="relative">
