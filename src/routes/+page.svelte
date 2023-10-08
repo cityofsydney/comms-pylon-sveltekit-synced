@@ -77,7 +77,7 @@
 	});
 
 	let comboboxValue: string;
-	let display_unit_id = 'This is screen details testing';
+	let display_unit_id = '';
 	const popupCombobox: PopupSettings = {
 		event: 'click',
 		target: 'popupCombobox',
@@ -151,7 +151,9 @@
 
 <div class="container h-full mx-auto flex justify-center items-start">
 	<div class="flex flex-col items-center min-h-[920px]">
-		<div id="myDiv">testing</div>
+		<div id="myDiv">
+			{display_unit_id}
+		</div>
 		<input type="hidden" id="screendetails" value="" />
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
