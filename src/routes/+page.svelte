@@ -270,9 +270,11 @@
 		<Splide
 			on:click={(e) => {
 				window.dataLayer = window.dataLayer || [];
+				display_unit_id = document.getElementById('screendetails').value;
 				dataLayer.push({
 					event: 'slideClick',
-					slug: e.detail.Slide.slide.dataset.slug
+					slug: e.detail.Slide.slide.dataset.slug,
+					screenID: display_unit_id
 				});
 
 				setTimeout(function () {
