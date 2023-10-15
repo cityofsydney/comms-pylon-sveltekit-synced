@@ -127,9 +127,10 @@
 		display_unit_id = document.getElementById('screendetails').value;
 		let buttonType = event.target.id;
 		window.dataLayer = window.dataLayer || [];
+		const displayunitid = display_unit_id ? display_unit_id : 'no_screen';
 		dataLayer.push({
 			event: buttonType,
-			screenID: display_unit_id
+			screenID: displayunitid
 		});
 		feedbackButton = feedbackButtonTextAlt;
 		disabledIsRunning = true;
@@ -271,12 +272,12 @@
 			on:click={(e) => {
 				window.dataLayer = window.dataLayer || [];
 				display_unit_id = document.getElementById('screendetails').value;
+				const displayunitid = display_unit_id ? display_unit_id : 'no_screen';
 				dataLayer.push({
 					event: 'slideClick',
 					slug: e.detail.Slide.slide.dataset.slug,
-					screenID: display_unit_id
+					screenID: displayunitid
 				});
-
 				setTimeout(function () {
 					console.log('fake click');
 					document.body.click();
