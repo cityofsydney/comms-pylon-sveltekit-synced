@@ -19,11 +19,12 @@
 		const unsubscribe = await subscribeToQuery({
 			query: `query MyQuery {
 				message {
-					title
-					id
+						title
+						content
+						id
 				}
-				}`,
-			variables: { first: 10 },
+			}`,
+			variables: { first: 1 },
 			token: PUBLIC_EMERGENCY_SCREENS_DATOCMS_API_TOKEN,
 			preview: true,
 			
@@ -59,12 +60,18 @@
 	});
 </script>
 
-{#await promise}
-	<p>{$emergencyStatus}</p>
-{:then success}
+<div class="flex flex-col">
 
-{success}
-	{$emergencyData.title}
-{:catch error}
-	<p style="color: red">{error.message}</p>
-{/await}
+		{#await promise}
+		<p>{$emergencyStatus}</p>
+		{:then success}
+		<h1 class="text-8xl leading-none mb-16 h2 !font-normal">{$emergencyData.title}</h1>
+		<p class="text-7xl leading-tight mb-8">{$emergencyData.content}</p>
+		{:catch error}
+		<p style="color: red">{error.message}</p>
+		{/await}
+
+
+</div>
+
+
