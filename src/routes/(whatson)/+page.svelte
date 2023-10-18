@@ -77,7 +77,7 @@
 	});
 
 	let comboboxValue: string;
-
+	let display_unit_id = '';
 	const popupCombobox: PopupSettings = {
 		event: 'click',
 		target: 'popupCombobox',
@@ -124,12 +124,14 @@
 		}, 10000);
 	}
 	function handleButtonClick(event) {
+		display_unit_id = document.getElementById('screendetails').value;
 		let buttonType = event.target.id;
 		window.dataLayer = window.dataLayer || [];
+		const displayunitid = display_unit_id ? display_unit_id : 'no_screen';
 		dataLayer.push({
-			event: buttonType
+			event: buttonType,
+			screenID: displayunitid
 		});
-
 		feedbackButton = feedbackButtonTextAlt;
 		disabledIsRunning = true;
 		buttonsDisabled = true;
@@ -151,6 +153,10 @@
 
 <div class="container h-full mx-auto flex justify-center items-start">
 	<div class="flex flex-col items-center min-h-[920px]">
+		<div id="myDiv">
+			{display_unit_id}
+		</div>
+		<input type="hidden" id="screendetails" value="" />
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
 				<SplideSlide class="relative">
@@ -161,7 +167,8 @@
 						<h2 class="text-white text-6xl leading-none mb-5 h2 !font-normal">{slide.name}</h2>
 						<p class="text-white text-4xl mb-5">{slide.strapline}</p>
 						<p class="text-white text-2xl flex items-center">
-							{formatDate(slide.upcomingDate)} {slide.eventUpcomingTime}<span class="px-2" />
+							{formatDate(slide.upcomingDate)}
+							{slide.eventUpcomingTime}<span class="px-2" />
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
 								><path
 									fill="#fff"
@@ -264,11 +271,13 @@
 		<Splide
 			on:click={(e) => {
 				window.dataLayer = window.dataLayer || [];
+				display_unit_id = document.getElementById('screendetails').value;
+				const displayunitid = display_unit_id ? display_unit_id : 'no_screen';
 				dataLayer.push({
 					event: 'slideClick',
-					slug: e.detail.Slide.slide.dataset.slug
+					slug: e.detail.Slide.slide.dataset.slug,
+					screenID: displayunitid
 				});
-
 				setTimeout(function () {
 					console.log('fake click');
 					document.body.click();
@@ -391,6 +400,20 @@
 	</div>
 	<div class="arrow bg-yellow-400" />
 </div>
+<svelte:head>
+	<script>
+		function BroadSignPlay() {
+			if (typeof BroadSignObject !== 'undefined') {
+				//display_unit_id = BroadSignObject['display_unit_id'];
+				display_unit_id = BroadSignObject['display_unit_id'];
+			} else {
+				display_unit_id = '';
+			}
+			let screendetails = document.getElementById('screendetails');
+			screendetails.value = display_unit_id;
+		}
+	</script>
+</svelte:head>
 
 <style lang="postcss">
 </style>
