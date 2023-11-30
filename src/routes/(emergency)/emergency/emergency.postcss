@@ -24,6 +24,12 @@ html,
 body {
 	@apply h-full overflow-hidden !bg-[--blue];
 }
+
+@media (min-width: 2160px) {
+	html, body {
+		@apply text-[200%]
+	}
+}
 [data-theme='skeleton'] {
 	@apply !bg-[--blue];
 	background-image:none

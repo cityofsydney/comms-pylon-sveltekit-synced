@@ -73,6 +73,7 @@
 </AppShell>
 
 <svelte:head>
+	<title>Whats on nearby</title>
 	<!-- Google Tag Manager -->
 	<script>
 		(function (w, d, s, l, i) {
