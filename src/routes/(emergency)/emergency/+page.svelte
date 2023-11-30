@@ -1,17 +1,18 @@
 <script lang="ts">
 	// SvelteKit Imports
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 
 	import { PUBLIC_EMERGENCY_SCREENS_DATOCMS_API_TOKEN } from '$env/static/public';
 	import { subscribeToQuery } from 'datocms-listen';
+
+	// Stores
+	import { emergencyData, emergencyStatus } from '$lib/stores';
 
 	// +page.ts
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	// Stores
-	import { emergencyData, emergencyStatus } from '$lib/stores';
+
 
 	let promise = getRealTimeData();
 
@@ -70,7 +71,6 @@
 		{:catch error}
 		<p style="color: red">{error.message}</p>
 		{/await}
-
 
 </div>
 
