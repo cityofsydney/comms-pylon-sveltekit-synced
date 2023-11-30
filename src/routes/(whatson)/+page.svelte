@@ -77,7 +77,7 @@
 	});
 
 	let comboboxValue: string;
-	let display_unit_id = '';
+	let player_id = '';
 	const popupCombobox: PopupSettings = {
 		event: 'click',
 		target: 'popupCombobox',
@@ -124,10 +124,10 @@
 		}, 10000);
 	}
 	function handleButtonClick(event) {
-		display_unit_id = document.getElementById('screendetails').value;
+		player_id = document.getElementById('screendetails').value;
 		let buttonType = event.target.id;
 		window.dataLayer = window.dataLayer || [];
-		const displayunitid = display_unit_id ? display_unit_id : 'no_screen';
+		const displayunitid = player_id ? player_id : 'no_screen';
 		dataLayer.push({
 			event: buttonType,
 			screenID: displayunitid
@@ -153,9 +153,6 @@
 
 <div class="container h-full mx-auto flex justify-center items-start">
 	<div class="flex flex-col items-center min-h-[920px]">
-		<div id="myDiv">
-			{display_unit_id}
-		</div>
 		<input type="hidden" id="screendetails" value="" />
 		<Splide bind:this={main} {options}>
 			{#each $nowShowingStore as slide}
@@ -271,8 +268,8 @@
 		<Splide
 			on:click={(e) => {
 				window.dataLayer = window.dataLayer || [];
-				display_unit_id = document.getElementById('screendetails').value;
-				const displayunitid = display_unit_id ? display_unit_id : 'no_screen';
+				player_id = document.getElementById('screendetails').value;
+				const displayunitid = player_id ? player_id : 'no_screen';
 				dataLayer.push({
 					event: 'slideClick',
 					slug: e.detail.Slide.slide.dataset.slug,
@@ -404,13 +401,13 @@
 	<script>
 		function BroadSignPlay() {
 			if (typeof BroadSignObject !== 'undefined') {
-				//display_unit_id = BroadSignObject['display_unit_id'];
-				display_unit_id = BroadSignObject['display_unit_id'];
+				//player_id = BroadSignObject['player_id'];
+				player_id = BroadSignObject['player_id'];
 			} else {
-				display_unit_id = '';
+				player_id = '';
 			}
 			let screendetails = document.getElementById('screendetails');
-			screendetails.value = display_unit_id;
+			screendetails.value = player_id;
 		}
 	</script>
 </svelte:head>
