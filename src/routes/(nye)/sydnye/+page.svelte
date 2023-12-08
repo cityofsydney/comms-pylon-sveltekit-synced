@@ -21,7 +21,11 @@
 			{#each items as item}
 				<div class="basis-3/4">{item.title}</div>
 				<div class="basis-1/4 ml-auto text-right flex items-center">
-					Open
+					{#if item.statusAlert === null}
+						Open
+					{:else}
+						{item.statusAlert}
+					{/if}
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="32"
