@@ -1,9 +1,13 @@
 import type { PageServerLoad } from './$types';
-import { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN } from '$env/static/private';
+import { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_PREVIEW_ACCESS_TOKEN } from '$env/static/private';
 import { error } from '@sveltejs/kit';
+
 export const load = (async () => {
+
+    const { MODE } = import.meta.env;
+
     const vpquery = ` {
-        allVantagePointCollection: vantagePointCollection(where:{showOnQmsScreen:true}){
+        allVantagePointCollection: vantagePointCollection(preview: ${ MODE === 'development' ? 'true': 'false'}, where:{showOnQmsScreen:true}){
 			items{
                 title
                 slug
@@ -12,22 +16,25 @@ export const load = (async () => {
 		}
 
 	}`;
+
     const url = `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`;
-    const vpresponse = await fetch(url, {
+
+    const res = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + CONTENTFUL_ACCESS_TOKEN
+            Authorization: `Bearer ${ MODE === "development" ? CONTENTFUL_PREVIEW_ACCESS_TOKEN : CONTENTFUL_ACCESS_TOKEN}` 
         },
         body: JSON.stringify({ query: vpquery })
     });
-    if (!vpresponse.ok) {
+
+    if (!res.ok) {
         throw error(404, {
-            message: vpresponse.statusText
+            message: res.statusText
         });
     }
     else {
-        const { data } = await vpresponse.json();
+        const { data } = await res.json();
         const { items } = data.allVantagePointCollection;
         const sortedVpData = items.slice().sort((a, b) => {
             return a.title.localeCompare(b.title);
