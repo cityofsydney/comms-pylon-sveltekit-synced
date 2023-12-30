@@ -13,7 +13,7 @@
 </script>
 
 <div
-	class="flex flex-col bg-origin-border bg-left-top bg-[url('/img/sydnye-bg.png')] bg-no-repeat bg-cover h-full pl-48 pr-44 pt-52 pb-72"
+	class="flex flex-col bg-origin-border bg-left-top bg-[url('/img/sydnye-bg.png')] bg-no-repeat bg-cover h-full pl-48 pr-44 pt-16 pb-72"
 >
 	<div class="flex flex-col max-h-full h-full">
 		<h1 class="text-8xl leading-tight font-heading-token">Vantage point live updates</h1>
