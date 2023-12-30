@@ -7,7 +7,7 @@ export const load = (async () => {
     const { MODE } = import.meta.env;
 
     const vpquery = ` {
-        allVantagePointCollection: vantagePointCollection(preview: ${ MODE === 'development' ? 'true': 'true'}, where:{showOnQmsScreen:true}){
+        allVantagePointCollection: vantagePointCollection(preview: ${ MODE === 'development' ? 'true': 'false'}, where:{showOnQmsScreen:true}){
 			items{
                 title
                 slug
@@ -23,7 +23,7 @@ export const load = (async () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${ MODE === "development" ? CONTENTFUL_PREVIEW_ACCESS_TOKEN : CONTENTFUL_PREVIEW_ACCESS_TOKEN}` 
+            Authorization: `Bearer ${ MODE === "development" ? CONTENTFUL_PREVIEW_ACCESS_TOKEN : CONTENTFUL_ACCESS_TOKEN}` 
         },
         body: JSON.stringify({ query: vpquery })
     });
