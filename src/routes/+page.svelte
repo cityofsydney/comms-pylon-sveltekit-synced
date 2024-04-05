@@ -399,6 +399,10 @@
 </div>
 <svelte:head>
 	<script>
+		document.oncontextmenu = function () {
+			return false;
+		};
+
 		function BroadSignPlay() {
 			if (typeof BroadSignObject !== 'undefined') {
 				//player_id = BroadSignObject['player_id'];
