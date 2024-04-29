@@ -30,7 +30,7 @@
       <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/0987654321" rel="standout"></atom:link>
       <description>lorem</description>
       <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="text/html" url="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/0987654321" duration="15"></media:content>
+       <media:content medium="document" type="application/widget" url="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/zip/green.zip" duration="10"></media:content>
     </item>
 
   </channel>
