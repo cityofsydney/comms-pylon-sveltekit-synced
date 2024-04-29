@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytimes.com/namespaces/rss/2.0" version="2.0">
+  <channel>
+    <title>Test 101</title>
+    <link>https://www.nytimes.com/section/world</link>
+    <atom:link href="https://rss.nytimes.com/services/xml/rss/nyt/World.xml" rel="self" type="application/rss+xml"></atom:link>
+    <description></description>
+    <language>en-us</language>
+    <copyright>Copyright 2024 The New York Times Company</copyright>
+    <lastBuildDate>Sun, 28 Apr 2024 23:20:12 +0000</lastBuildDate>
+    <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
+    <image>
+      <title>City of sydney News</title>
+      <url>https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png</url>
+      <link>https://www.nytimes.com/section/world</link>
+    </image>
+    <item>
+      <title>Test title 1</title>
+      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/1234567890</link>
+      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/1234567890</guid>
+      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/1234567890" rel="standout"></atom:link>
+      <description>lorem</description>
+      <pubDate>Sun, 28 Apr 2024 09:00:57 +0000</pubDate>
+      <media:content medium="document" type="text/html" url="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/1234567890" duration="15"></media:content>
+    </item>
+    <item>
+      <title>test title 2</title>
+      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/0987654321</link>
+      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/0987654321</guid>
+      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/0987654321" rel="standout"></atom:link>
+      <description>lorem</description>
+      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
+       <media:content medium="document" type="text/html" url="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/0987654321" duration="15"></media:content>
+    </item>
+
+  </channel>
+</rss>
