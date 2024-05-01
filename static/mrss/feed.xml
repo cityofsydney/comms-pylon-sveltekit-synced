@@ -7,8 +7,8 @@
     <description></description>
     <language>en-us</language>
     <copyright>Copyright 2024 The New York Times Company</copyright>
-    <lastBuildDate>Sun, 28 Apr 2024 23:20:12 +0000</lastBuildDate>
-    <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
+    <lastBuildDate>Mon, 29 Apr 2024 23:20:12 +0000</lastBuildDate>
+    <pubDate>Mon, 29 Apr 2024 22:43:03 +0000</pubDate>
     <image>
       <title>City of sydney News</title>
       <url>https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png</url>
@@ -16,76 +16,23 @@
     </image>
     <item>
       <title>Test title 1</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/7gt7yY6eSdVQL6N9vTEZ0d</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/7gt7yY6eSdVQL6N9vTEZ0d</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/7gt7yY6eSdVQL6N9vTEZ0d" rel="standout"></atom:link>
+      <link>https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d</link>
+      <guid isPermaLink="true">https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d</guid>
+      <atom:link href="https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d" rel="standout"></atom:link>
       <description>lorem</description>
       <pubDate>Sun, 28 Apr 2024 09:00:57 +0000</pubDate>
-      <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d?v=1" duration="10"></media:content>
+      <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d?v=2" duration="10"></media:content>
     </item>
     <item>
       <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/2VEi3ZUuriGMFjL2lDKlVP</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/2VEi3ZUuriGMFjL2lDKlVP</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/2VEi3ZUuriGMFjL2lDKlVP" rel="standout"></atom:link>
+      <link>https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP</link>
+      <guid isPermaLink="true">https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP</guid>
+      <atom:link href="https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP" rel="standout"></atom:link>
       <description>lorem</description>
       <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP?v=1" duration="10"></media:content>
+       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP?v=2" duration="10"></media:content>
     </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/3Pgcfv1rvi6fQlW2vFmkqv</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/3Pgcfv1rvi6fQlW2vFmkqv</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/3Pgcfv1rvi6fQlW2vFmkqv" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/3Pgcfv1rvi6fQlW2vFmkqv?v=1" duration="10"></media:content>
-    </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/55N0lknIn2L7RyxcQKdGFz</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/55N0lknIn2L7RyxcQKdGFz</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/55N0lknIn2L7RyxcQKdGFz" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/55N0lknIn2L7RyxcQKdGFz?v=1" duration="10"></media:content>
-    </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/7t4bNTOeNPZlRwIQySiX3J</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/7t4bNTOeNPZlRwIQySiX3J</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/7t4bNTOeNPZlRwIQySiX3J" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/7t4bNTOeNPZlRwIQySiX3J?v=1" duration="10"></media:content>
-    </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/3jf4H8sWQIMgpoaFdH35yA</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/3jf4H8sWQIMgpoaFdH35yA</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/3jf4H8sWQIMgpoaFdH35yA" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/3jf4H8sWQIMgpoaFdH35yA?v=1" duration="10"></media:content>
-    </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/5vTCrCXdRmPTVDUagPn96a</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/5vTCrCXdRmPTVDUagPn96a</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/5vTCrCXdRmPTVDUagPn96a" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/5vTCrCXdRmPTVDUagPn96a?v=1" duration="10"></media:content>
-    </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/BOaZes6WQ0A6DaMo3GEs3</link>
-      <guid isPermaLink="true">https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/BOaZes6WQ0A6DaMo3GEs3</guid>
-      <atom:link href="https://sydnye--comms-pylon-whats-on-nearby.netlify.app/algolia/BOaZes6WQ0A6DaMo3GEs3" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/BOaZes6WQ0A6DaMo3GEs3?v=1" duration="10"></media:content>
-    </item>
+
 
   </channel>
 </rss>
