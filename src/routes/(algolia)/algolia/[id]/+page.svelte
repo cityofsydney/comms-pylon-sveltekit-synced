@@ -5,7 +5,7 @@
 
     $: ({ post } = data);
 
-    $: console.log(post);
+   // $: console.log(post);
 
 </script>
 
