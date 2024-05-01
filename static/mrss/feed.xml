@@ -1,7 +1,10 @@
+<?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
    <channel>
        <title>Song Site</title>
        <link>http://www.foo.com</link>
+       <pubDate>Tue, 10 Jun 2003 04:00:00 GMT</pubDate>
+        <lastBuildDate>Fri, 21 Jul 2023 09:04 EDT</lastBuildDate>
        <description>Discussion on different songs</description>
        <item>
            <title>These songs make me think about blah</title>
