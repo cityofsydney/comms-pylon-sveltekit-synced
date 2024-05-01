@@ -1,38 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytimes.com/namespaces/rss/2.0" version="2.0">
-  <channel>
-    <title>Test 101</title>
-    <link>https://www.nytimes.com/section/world</link>
-    <atom:link href="https://rss.nytimes.com/services/xml/rss/nyt/World.xml" rel="self" type="application/rss+xml"></atom:link>
-    <description></description>
-    <language>en-us</language>
-    <copyright>Copyright 2024 The New York Times Company</copyright>
-    <lastBuildDate>Mon, 29 Apr 2024 23:20:12 +0000</lastBuildDate>
-    <pubDate>Mon, 29 Apr 2024 22:43:03 +0000</pubDate>
-    <image>
-      <title>City of sydney News</title>
-      <url>https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png</url>
-      <link>https://www.nytimes.com/section/world</link>
-    </image>
-    <item>
-      <title>Test title 1</title>
-      <link>https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d</link>
-      <guid isPermaLink="true">https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d</guid>
-      <atom:link href="https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 09:00:57 +0000</pubDate>
-      <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/7gt7yY6eSdVQL6N9vTEZ0d" duration="10"></media:content>
-    </item>
-    <item>
-      <title>test title 2</title>
-      <link>https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP</link>
-      <guid isPermaLink="true">https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP</guid>
-      <atom:link href="https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP" rel="standout"></atom:link>
-      <description>lorem</description>
-      <pubDate>Sun, 28 Apr 2024 22:43:03 +0000</pubDate>
-       <media:content medium="document" type="application/widget" url="https://cos-express-api-upgrade.web.app/zip/event/2VEi3ZUuriGMFjL2lDKlVP" duration="10"></media:content>
-    </item>
-
-
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+   <channel>
+       <title>Song Site</title>
+       <link>http://www.foo.com</link>
+       <description>Discussion on different songs</description>
+       <item>
+           <title>These songs make me think about blah</title>
+           <link>https://whatson.cityofsydney.nsw.gov.au/events/creative-coding-for-teens-12-16yrs</link>
+           <guid isPermaLink="false">
+               <![CDATA[13968f22-020c-11ef-9ded-378eba939af3]]>
+           </guid>
+           <media:content url="https://cos-express-api-upgrade.web.app/zip/event/5R8FfqDdQiDRsky8JZyYm4" type="application/widget" medium="document" duration="10" />
+       </item>
+       <item>
+           <title>City of Sydney Online Book Club: Authors for NAIDOC Week</title>
+           <link>https://whatson.cityofsydney.nsw.gov.au/events/city-of-sydney-online-book-club-authors-for-naidoc-week</link>
+           <guid isPermaLink="false">
+               <![CDATA[13968f22-020c-11ef-9ded-378eba939af3]]>
+           </guid>
+           <media:content url="https://cos-express-api-upgrade.web.app/zip/event/3TBo43oN155UcgqFmCMFsP" type="application/widget" medium="document" duration="10" />
+       </item>
+       <item>
+           <title>Makertime: open access 16+yrs </title>
+           <link>https://whatson.cityofsydney.nsw.gov.au/events/city-of-sydney-online-book-club-authors-for-naidoc-week</link>
+           <guid isPermaLink="false">
+               <![CDATA[13968f22-020c-11ef-9ded-378eba939af3]]>
+           </guid>
+           <media:content url="https://cos-express-api-upgrade.web.app/zip/event/2mTaNnRKTWu5dErMhhJZlj" type="application/widget" medium="document" duration="10" />
+       </item>
+   </channel>
 </rss>
